@@ -24,36 +24,43 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="cleanName" lay-verify="required"
-                               name="cleanName" type="text" v-model="clean.cleanName">
+                               name="cleanName" type="text"
+                               v-model="clean.cleanName">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="content">
                     <span class="x-red">*</span>服务内容
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="content"
-                                                                              lay-verify="required" name="content"
-                                                                              rows="4"
-                                                                              v-model="clean.content">></textarea>
+                                                                            <textarea class="layui-textarea"
+                                                                                      id="content" lay-verify="required"
+                                                                                      name="content"
+                                                                                      rows="4"
+                                                                                      v-model="clean.content">></textarea>
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="description">
                     <span class="x-red">*</span>服务描述
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="description"
-                                                                              lay-verify="required" name="description"
-                                                                              rows="4"
-                                                                              v-model="clean.description">></textarea>
+                                                                            <textarea class="layui-textarea"
+                                                                                      id="description"
+                                                                                      lay-verify="required"
+                                                                                      name="description"
+                                                                                      rows="4"
+                                                                                      v-model="clean.description">></textarea>
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="price">
                     <span class="x-red">*</span>价格
@@ -61,10 +68,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="price" lay-verify="required"
-                               name="price" type="text" v-model="clean.price">
+                               name="price" type="text"
+                               v-model="clean.price">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="userId">
                     <span class="x-red">*</span>发布人
@@ -72,10 +81,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="userId" lay-verify="required"
-                               name="userId" type="text" v-model="clean.userId">
+                               name="userId" type="text"
+                               v-model="clean.userId">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="categoryId">
                     <span class="x-red">*</span>服务分类编号
@@ -83,10 +94,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="categoryId" lay-verify="required"
-                               name="categoryId" type="text" v-model="clean.categoryId">
+                               name="categoryId" type="text"
+                               v-model="clean.categoryId">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="type">
                     <span class="x-red">*</span>类型
@@ -94,10 +107,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="type" lay-verify="required"
-                               name="type" type="text" v-model="clean.type">
+                               name="type" type="text"
+                               v-model="clean.type">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="status">
                     <span class="x-red">*</span>状态
@@ -105,32 +120,13 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="status" lay-verify="required"
-                               name="status" type="text" v-model="clean.status">
+                               name="status" type="text"
+                               v-model="clean.status">
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="createTime">
-                    <span class="x-red">*</span>发布时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" lay-verify="required"
-                               name="createTime" type="text" v-model="clean.createTime">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="updateTime">
-                    <span class="x-red">*</span>修改时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="updateTime" lay-verify="required"
-                               name="updateTime" type="text" v-model="clean.updateTime">
-                    </div>
-                </div>
-            </div>
+
+
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-filter="edit" lay-submit="">

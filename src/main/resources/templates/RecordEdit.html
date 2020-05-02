@@ -24,10 +24,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="score" lay-verify="required"
-                               name="score" type="text" v-model="record.score">
+                               name="score" type="text"
+                               v-model="record.score">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="serviceId">
                     <span class="x-red">*</span>家政编号
@@ -35,10 +37,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="serviceId" lay-verify="required"
-                               name="serviceId" type="text" v-model="record.serviceId">
+                               name="serviceId" type="text"
+                               v-model="record.serviceId">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="serviceName">
                     <span class="x-red">*</span>家政名称
@@ -46,10 +50,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="serviceName" lay-verify="required"
-                               name="serviceName" type="text" v-model="record.serviceName">
+                               name="serviceName" type="text"
+                               v-model="record.serviceName">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="userId">
                     <span class="x-red">*</span>用户编号
@@ -57,10 +63,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="userId" lay-verify="required"
-                               name="userId" type="text" v-model="record.userId">
+                               name="userId" type="text"
+                               v-model="record.userId">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="userName">
                     <span class="x-red">*</span>用户名称
@@ -68,32 +76,13 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="userName" lay-verify="required"
-                               name="userName" type="text" v-model="record.userName">
+                               name="userName" type="text"
+                               v-model="record.userName">
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="createTime">
-                    <span class="x-red">*</span>追加时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" lay-verify="required"
-                               name="createTime" type="text" v-model="record.createTime">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="updateTime">
-                    <span class="x-red">*</span>修改时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="updateTime" lay-verify="required"
-                               name="updateTime" type="text" v-model="record.updateTime">
-                    </div>
-                </div>
-            </div>
+
+
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-filter="edit" lay-submit="">

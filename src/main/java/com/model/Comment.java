@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 评论
+ * 留言
  * @author Clrvn
  */
 @Data
@@ -15,12 +15,12 @@ public class Comment implements Serializable{
     private static final long serialVersionUID = 1L;
 
     /**
-     * 评论编号
+     * 留言编号
      */
     private Integer id;
 
     /**
-     * 评论内容
+     * 留言内容
      */
     private String content;
 

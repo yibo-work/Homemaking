@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 评论Controller
+ * 留言Controller
  * @author Clrvn
  */
 @RestController
@@ -23,8 +23,8 @@ public class CommentController {
     private CommentService commentService;
 
     /**
-     * 查询评论页面
-     * @return 分页评论数据
+     * 查询留言页面
+     * @return 分页留言数据
      */
     @GetMapping("/page")
     public PageInfo<Comment> page() {
@@ -32,7 +32,7 @@ public class CommentController {
     }
 
     /**
-     * 查询评论列表
+     * 查询留言列表
      */
     @GetMapping("/list")
     public ResultVO list() {
@@ -41,7 +41,7 @@ public class CommentController {
     }
 
     /**
-     * 通过id查询单个评论
+     * 通过id查询单个留言
      */
     @GetMapping("/findById")
     public ResultVO findById(@RequestParam(value = "id") Integer id) {
@@ -50,7 +50,7 @@ public class CommentController {
     }
 
     /**
-     * 通过map查询单个评论
+     * 通过map查询单个留言
      */
     @GetMapping("/findByMap")
     public ResultVO findByMap() {
@@ -59,7 +59,7 @@ public class CommentController {
     }
 
     /**
-     * 添加评论
+     * 添加留言
      */
     @PostMapping("/save")
     public ResultVO save(@RequestBody Comment comment) {
@@ -68,7 +68,7 @@ public class CommentController {
     }
 
     /**
-     * 修改评论
+     * 修改留言
      */
     @PutMapping("/update")
     public ResultVO update(@RequestBody Comment comment) {
@@ -77,7 +77,7 @@ public class CommentController {
     }
 
     /**
-     * 删除评论
+     * 删除留言
      */
     @DeleteMapping("/deleteById")
     public ResultVO deleteById(@RequestParam(value = "id") Integer id) {

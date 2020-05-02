@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 评论ServiceImpl
+ * 留言ServiceImpl
  * @author Clrvn
  */
 @Service
@@ -23,8 +23,8 @@ public class CommentServiceImpl implements CommentService {
     private CommentDao commentDao;
 
     /**
-     * 查询评论页面
-     * @return 分页评论数据
+     * 查询留言页面
+     * @return 分页留言数据
      */
     @Override
     public PageInfo<Comment> page(RequestParamsUtil requestParamsUtil) {
@@ -33,7 +33,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 查询评论列表
+     * 查询留言列表
      */
     @Override
     public List<Comment> list(Map<String, Object> map) {
@@ -42,7 +42,7 @@ public class CommentServiceImpl implements CommentService {
 
 
     /**
-     * 通过id查询单个评论
+     * 通过id查询单个留言
      */
     @Override
     public Comment findById(Integer id) {
@@ -50,7 +50,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 通过map查询单个评论
+     * 通过map查询单个留言
      */
     @Override
     public Comment findByMap(Map<String, Object> map) {
@@ -58,7 +58,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 新增评论
+     * 新增留言
      */
     @Override
     public int save(Comment comment) {
@@ -66,7 +66,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 修改评论
+     * 修改留言
      */
     @Override
     public int update(Comment comment) {
@@ -74,7 +74,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 删除评论
+     * 删除留言
      */
     @Override
     public int deleteById(Integer id) {

@@ -24,23 +24,24 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="categoryName" lay-verify="required"
-                               name="categoryName" type="text" v-model="category.categoryName">
+                               name="categoryName" type="text"
+                               v-model="category.categoryName">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="description">
                     <span class="x-red">*</span>分类描述
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="description"
-                                                                              lay-verify="required" name="description"
-                                                                              rows="4"
-                                                                              v-model="category.description">></textarea>
+                        <textarea class="layui-textarea" id="description" lay-verify="required" name="description" rows="4"
+                              v-model="category.description">></textarea>
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="status">
                     <span class="x-red">*</span>状态
@@ -48,32 +49,13 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="status" lay-verify="required"
-                               name="status" type="text" v-model="category.status">
+                               name="status" type="text"
+                               v-model="category.status">
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="createTime">
-                    <span class="x-red">*</span>创建时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" lay-verify="required"
-                               name="createTime" type="text" v-model="category.createTime">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="updateTime">
-                    <span class="x-red">*</span>修改时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="updateTime" lay-verify="required"
-                               name="updateTime" type="text" v-model="category.updateTime">
-                    </div>
-                </div>
-            </div>
+
+
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-filter="edit" lay-submit="">

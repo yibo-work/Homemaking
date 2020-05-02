@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>评论管理</title>
+    <title>留言管理</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -30,8 +30,8 @@
             <div class="layui-card">
 
                 <div class="layui-card-header">
-                    <button class="layui-btn" onclick="xadmin.open('添加评论','/commentAdd',500,700)">
-                        <i class="layui-icon"></i>添加评论
+                    <button class="layui-btn" onclick="xadmin.open('添加留言','/commentAdd',500,700)">
+                        <i class="layui-icon"></i>添加留言
                     </button>
                 </div>
                 <div class="layui-card-body">
@@ -39,7 +39,7 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>评论内容</th>
+                            <th>留言内容</th>
                             <th>用户编号</th>
                             <th>留言用户编号</th>
                             <th>发布时间</th>
@@ -57,13 +57,13 @@
                                 <button @click="editComment(comment.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editComment"
-                                        onclick="xadmin.open('编辑评论','/commentEdit',500,700)">
+                                        onclick="xadmin.open('编辑留言','/commentEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewComment(comment.id)"
                                         class="layui-btn"
                                         id="viewComment"
-                                        onclick="xadmin.open('评论详情','/commentView',500,700)">
+                                        onclick="xadmin.open('留言详情','/commentView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
                                 <button @click="delComment(comment.id)"
@@ -74,7 +74,7 @@
                             </td>
                         </tr>
                         <tr v-if="pageInfo.total == 0">
-                            <td colspan="100" style="text-align: center">暂无评论信息！</td>
+                            <td colspan="100" style="text-align: center">暂无留言信息！</td>
                         </tr>
                         </tbody>
                     </table>
@@ -132,7 +132,7 @@
                 });
             },
             /**
-             * 删除评论
+             * 删除留言
              */
             delComment: function (id) {
                 layer.confirm('确认要删除吗？',
@@ -164,7 +164,7 @@
             },
             /**
              *
-             * 修改评论
+             * 修改留言
              */
             editComment: function (editCommentId) {
                 //把要修改的editCommentId存到sessionStorage中
@@ -172,7 +172,7 @@
             },
             /**
              *
-             * 评论详情
+             * 留言详情
              */
             viewComment: function (viewCommentId) {
                 //把要修改的viewCommentId存到sessionStorage中

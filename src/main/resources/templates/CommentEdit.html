@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>修改评论</title>
+    <title>修改留言</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -19,17 +19,19 @@
         <form class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label" for="content">
-                    <span class="x-red">*</span>评论内容
+                    <span class="x-red">*</span>留言内容
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="content"
-                                                                              lay-verify="required" name="content"
-                                                                              rows="4"
-                                                                              v-model="comment.content">></textarea>
+                                                                            <textarea class="layui-textarea"
+                                                                                      id="content" lay-verify="required"
+                                                                                      name="content"
+                                                                                      rows="4"
+                                                                                      v-model="comment.content">></textarea>
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="userId">
                     <span class="x-red">*</span>用户编号
@@ -37,10 +39,12 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="userId" lay-verify="required"
-                               name="userId" type="text" v-model="comment.userId">
+                               name="userId" type="text"
+                               v-model="comment.userId">
                     </div>
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="commentUserId">
                     <span class="x-red">*</span>留言用户编号
@@ -48,21 +52,13 @@
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="commentUserId" lay-verify="required"
-                               name="commentUserId" type="text" v-model="comment.commentUserId">
+                               name="commentUserId" type="text"
+                               v-model="comment.commentUserId">
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="createTime">
-                    <span class="x-red">*</span>发布时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" lay-verify="required"
-                               name="createTime" type="text" v-model="comment.createTime">
-                    </div>
-                </div>
-            </div>
+
+
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-filter="edit" lay-submit="">
@@ -95,7 +91,7 @@
                     if (result.code === 200) {
                         _this.comment = result.data;
                     } else {
-                        layer.alert("获取修改评论信息失败！");
+                        layer.alert("获取修改留言信息失败！");
                     }
                 }
             });

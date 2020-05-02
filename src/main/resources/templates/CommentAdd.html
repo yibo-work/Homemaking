@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>添加评论</title>
+    <title>添加留言</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -19,12 +19,15 @@
         <form class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label" for="content">
-                    <span class="x-red">*</span>评论内容
+                    <span class="x-red">*</span>留言内容
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <textarea class="layui-textarea" id="content" lay-verify="required" name="content"
-                                  rows="4"></textarea>
+
+                                                                            <textarea class="layui-textarea"
+                                                                                      id="content" lay-verify="required"
+                                                                                      name="content"
+                                                                                      rows="4"></textarea>
                     </div>
                 </div>
             </div>
@@ -34,6 +37,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
+
                         <input class="layui-input" id="userId" name="userId"
                                type="text">
                     </div>
@@ -45,18 +49,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
+
                         <input class="layui-input" id="commentUserId" name="commentUserId"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="createTime">
-                    <span class="x-red">*</span>发布时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" name="createTime"
                                type="text">
                     </div>
                 </div>
