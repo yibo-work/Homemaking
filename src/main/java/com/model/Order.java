@@ -1,15 +1,17 @@
 package com.model;
 
 import lombok.Data;
-import java.util.Date;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 服务订单
+ *
  * @author Clrvn
  */
 @Data
-public class Order implements Serializable{
+public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -62,6 +64,15 @@ public class Order implements Serializable{
      * 订单状态
      */
     private Integer status;
+
+    /**
+     * 发起人
+     */
+    private Integer createUserId;
+    /**
+     * 接受人编号
+     */
+    private Integer toUserId;
 
     /**
      * 添加时间

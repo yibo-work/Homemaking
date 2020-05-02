@@ -164,6 +164,24 @@
                     </li>
                 </ul>
             </li>
+            <li th:if="${session.USER.roleId != 1}">
+                <a href="javascript:void(0)">
+                    <i class="iconfont left-nav-li" lay-tips="预约订单">&#xe6b8;</i>
+                    <cite>预约订单</cite>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a onclick="xadmin.add_tab('我的接单','toMeOrder')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>我的接单</cite></a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('我的下单','myOrder')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>我的下单</cite></a>
+                    </li>
+                </ul>
+            </li>
             <li th:if="${session.USER.roleId == 1}">
                 <a href="javascript:void(0)">
                     <i class="iconfont left-nav-li" lay-tips="留言管理">&#xe6b8;</i>
@@ -184,14 +202,14 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('别人给我的留言','toMeComment')">
+                        <a onclick="xadmin.add_tab('我的回复','toMeComment')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>别人给我的留言</cite></a>
+                            <cite>我的回复</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('我自己的留言','myComment')">
+                        <a onclick="xadmin.add_tab('我的发布','myComment')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>我自己的留言</cite></a>
+                            <cite>我的发布</cite></a>
                     </li>
                 </ul>
             </li>

@@ -38,52 +38,12 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label" for="categoryId">
-                    分类编号
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <div id="categoryId" style="line-height: 36px" v-text="order.categoryId"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="cleanId">
-                    服务编号
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <div id="cleanId" style="line-height: 36px" v-text="order.cleanId"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="userId">
-                    用户编号
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <div id="userId" style="line-height: 36px" v-text="order.userId"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label" for="userName">
                     用户名称
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
                         <div id="userName" style="line-height: 36px" v-text="order.userName"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="serviceId">
-                    家政编号
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <div id="serviceId" style="line-height: 36px" v-text="order.serviceId"></div>
                     </div>
                 </div>
             </div>
@@ -103,13 +63,16 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <div id="status" style="line-height: 36px" v-text="order.status"></div>
+                        <div id="status" style="line-height: 36px;color: #FFB800" v-if="order.status == 0">未接单</div>
+                        <div id="status" style="line-height: 36px; color: #1E9FFF" v-if="order.status == 1">已接单</div>
+                        <div id="status" style="line-height: 36px;color: green" v-if="order.status == 2">已完成</div>
+                        <div id="status" style="line-height: 36px;color: red" v-if="order.status == -1">已取消</div>
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label" for="createTime">
-                    添加时间
+                    下单时间
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">

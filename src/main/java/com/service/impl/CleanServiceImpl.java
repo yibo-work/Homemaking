@@ -81,4 +81,13 @@ public class CleanServiceImpl implements CleanService {
         return cleanDao.deleteById(id);
     }
 
+    /**
+     * 添加点击量
+     *
+     */
+    @Override
+    public void addClicked(Integer id) {
+        cleanDao.addClicked(id);
+    }
+
 }

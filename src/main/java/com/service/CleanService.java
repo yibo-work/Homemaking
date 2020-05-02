@@ -49,4 +49,9 @@ public interface CleanService {
 	 */
 	int deleteById(Integer id);
 
+
+	/**
+	 * 添加点击量
+	 */
+    void addClicked(Integer id);
 }

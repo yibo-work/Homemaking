@@ -199,5 +199,10 @@
         from clean
         where id = #{id}
     </delete>
+    <update id="addClicked">
+        update clean
+        set clicked = clicked + 1
+        where id = #{id}
+    </update>
 
 </mapper>

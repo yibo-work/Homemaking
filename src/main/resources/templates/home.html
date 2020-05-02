@@ -300,6 +300,8 @@
                         contentType: "application/json",
                         success: function (result) {
                             if (result.code === 200) {
+                                //添加点击量
+                                $.post("clean/addClicked", {id: clean.id});
                                 layer.msg("留言成功", {icon: 6, time: 500},
                                     function () {
                                         location.reload();
@@ -316,39 +318,73 @@
             ,
             addOrder: function (cleanStr) {
                 var clean = JSON.parse(cleanStr);
-                layer.confirm('确认要删除吗？',
+                layer.confirm('确认要预约/下单吗？',
                     function () {
-                        var order = {};
-                        order.category_id = clean.category_id;
-                        order.cleanId = clean.id;
+
+                        //先查一下是否已经预约/下单了
+                        var userId = "";
+                        var serviceId = "";
 
                         if (sessionUser.roleId === 2) {//用人单位
-                            order.userId = sessionUser.sessionUser.id;
-                            order.serviceId = clean.userId;
+                            userId = sessionUser.id;
+                            serviceId = clean.userId;
                         }
                         if (sessionUser.roleId === 3) {//家政人员
-                            order.userId = clean.userId;
-                            order.serviceId = sessionUser.sessionUser.id;
+                            userId = clean.userId;
+                            serviceId = sessionUser.id;
                         }
 
-                        //发异步，把数据提交给java
                         $.ajax({
-                            url: "/order/save",
-                            data: JSON.stringify(order),
+                            url: "/order/findByMap",
+                            data: {
+                                cleanId: clean.id,
+                                userId: userId,
+                                serviceId: serviceId,
+                                createUserId: sessionUser.id,
+                                toUserId: clean.userId
+                            },
                             dataType: "json",
-                            type: "post",
+                            type: "get",
                             contentType: "application/json",
-                            success: function (result) {
-                                if (result.code === 200) {
-                                    layer.msg("预约/下单成功", {icon: 6, time: 500},
-                                        function () {
-                                            location.reload();
-                                        });
+                            success: function (res) {
+                                console.info(res.data);
+                                if (res.data) {
+                                    layer.msg("你已经预约了，请勿重复预约！");
+                                    return false;
                                 } else {
-                                    layer.alert(result.msg);
+                                    var order = {};
+                                    order.categoryId = clean.categoryId;
+                                    order.cleanId = clean.id;
+                                    order.userId = userId;
+                                    order.serviceId = serviceId;
+                                    order.createUserId = sessionUser.id;
+                                    order.toUserId = clean.userId;
+                                    console.info(order);
+                                    //发异步，把数据提交给java
+                                    $.ajax({
+                                        url: "/order/save",
+                                        data: JSON.stringify(order),
+                                        dataType: "json",
+                                        type: "post",
+                                        contentType: "application/json",
+                                        success: function (result) {
+                                            //添加点击量
+                                            $.post("clean/addClicked", {id: clean.id});
+                                            if (result.code === 200) {
+                                                layer.msg("预约/下单成功", {icon: 6, time: 500},
+                                                    function () {
+                                                        location.reload();
+                                                    });
+                                            } else {
+                                                layer.alert(result.msg);
+                                            }
+                                        }
+                                    });
+
                                 }
                             }
                         });
+
 
                         return false;
                     });

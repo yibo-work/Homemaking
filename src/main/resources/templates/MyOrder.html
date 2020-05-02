@@ -44,7 +44,7 @@
                             <th>用户名称</th>
                             <th>家政名称</th>
                             <th>状态</th>
-                            <th>下单时间</th>
+                            <th>添加时间</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -58,25 +58,39 @@
                             <td style="color: #FFB800" v-if="order.status==0">未接单</td>
                             <td style="color: #1E9FFF" v-if="order.status==1">已接单</td>
                             <td style="color:green" v-if="order.status==2">已完成</td>
+                            <td style="color:#121580" v-if="order.status==3">已打分</td>
                             <td style="color: red" v-if="order.status==-1">已取消</td>
                             <td v-text="order.createTime"></td>
                             <td class="td-manage">
-                                <!--<button @click="editOrder(order.id)"
-                                        class="layui-btn layui-btn-warm"
-                                        id="editOrder"
-                                        onclick="xadmin.open('编辑服务订单','/orderEdit',500,700)">
-                                    <i class="layui-icon">&#xe631;</i>编辑
-                                </button>-->
+                                <button @click="cancelOrder(order.id)" class="layui-btn layui-btn-warm"
+                                        id="cancelOrder"
+                                        v-if="order.status==0">
+                                    <i class="layui-icon layui-icon-close"></i>取消
+                                </button>
+                                <button @click="delOrder(order.id)" class="layui-btn layui-btn-danger"
+                                        id="delOrder"
+                                        v-if="order.status==0">
+                                    <i class="layui-icon">&#xe640;</i>删除
+                                </button>
+                                <!--只有用户才有权利点击完成订单-->
+                                <button @click="overOrder(order.id)" class="layui-btn layui-btn-primary"
+                                        id="overOrder"
+                                        th:if="${session.USER.roleId == 2}"
+                                        v-if="order.status==1">
+                                    <i class="layui-icon layui-icon-ok-circle"></i>完成
+                                </button>
+                                <!--只有用户才有权利点击打分-->
+                                <button @click="addRecord(JSON.stringify(order))" class="layui-btn layui-btn-primary"
+                                        id="addRecord"
+                                        th:if="${session.USER.roleId == 2}"
+                                        v-if="order.status==2">
+                                    <i class="layui-icon iconfont">&#xe6a4;</i>打分
+                                </button>
                                 <button @click="viewOrder(order.id)"
                                         class="layui-btn"
                                         id="viewOrder"
                                         onclick="xadmin.open('服务订单详情','/orderView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
-                                </button>
-                                <button @click="delOrder(order.id)"
-                                        class="layui-btn layui-btn-danger"
-                                        id="delOrder">
-                                    <i class="layui-icon">&#xe640;</i>删除
                                 </button>
                             </td>
                         </tr>
@@ -113,7 +127,9 @@
     </div>
 </div>
 </body>
-<script type="text/javascript">
+<script th:inline="javascript" type="text/javascript">
+
+    var sessionUser = [[${session.USER}]];
 
     layui.use(['form'], function () {
     });
@@ -134,6 +150,7 @@
                     url += "&pageSize=" + pageSize;
                 }
 
+                url += "&createUserId=" + sessionUser.id;
                 $.getJSON(url, function (data) {
                     _this.pageInfo = data;
                 });
@@ -170,12 +187,120 @@
                     });
             },
             /**
-             *
-             * 修改服务订单
+             * 取消订单
              */
-            editOrder: function (editOrderId) {
-                //把要修改的editOrderId存到sessionStorage中
-                sessionStorage.setItem("editOrderId", editOrderId);
+            cancelOrder: function (id) {
+                var order = {};
+                order.id = id;
+                order.status = -1;
+                layer.confirm('确认取消订单吗？',
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/order/update",
+                            data: JSON.stringify(order),
+                            dataType: "json",
+                            contentType: "application/json",
+                            type: "put",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('取消订单成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
+                                }
+                            }
+                        });
+
+                    });
+            },
+            /**
+             * 完成
+             */
+            overOrder: function (id) {
+                var order = {};
+                order.id = id;
+                order.status = 2;
+                layer.confirm('确认完成订单吗？',
+                    function () {
+                        //发异步请求数据
+                        $.ajax({
+                            url: "/order/update",
+                            data: JSON.stringify(order),
+                            dataType: "json",
+                            contentType: "application/json",
+                            type: "put",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('完成订单成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
+                                }
+                            }
+                        });
+
+                    });
+            },
+            /**
+             * 打分
+             */
+            addRecord: function (orderStr) {
+                var order = JSON.parse(orderStr);
+                layer.prompt({
+                    formType: 2,
+                    value: '100',
+                    title: '打分',
+                    area: ['150px', '100px'] //自定义文本域宽高
+                }, function (value, index, elem) {
+                    var record = {};
+                    record.score = value;
+                    record.userId = order.userId;
+                    record.serviceId = order.serviceId;
+                    //发异步，把数据提交给java
+                    $.ajax({
+                        url: "/record/save",
+                        data: JSON.stringify(record),
+                        dataType: "json",
+                        type: "post",
+                        contentType: "application/json",
+                        success: function (result) {
+                            if (result.code === 200) {
+                                order.status = 3;//已打分
+                                //发异步请求数据
+                                $.ajax({
+                                    url: "/order/update",
+                                    data: JSON.stringify(order),
+                                    dataType: "json",
+                                    contentType: "application/json",
+                                    type: "put",
+                                    success: function (result) {
+                                        if (result.code === 200) {
+                                            layer.msg("打分成功", {icon: 6, time: 500},
+                                                function () {
+                                                    location.reload();
+                                                });
+                                        }
+                                    }
+                                });
+                            } else {
+                                layer.alert(result.msg);
+                            }
+                        }
+                    });
+
+                    layer.close(index);
+                })
             },
             /**
              *

@@ -158,7 +158,6 @@
 
                 if (sessionUser.roleId !== 1) {
                     url += "&userId=" + sessionUser.id;
-                    url += "&status=1";
                 }
 
                 $.getJSON(url, function (data) {

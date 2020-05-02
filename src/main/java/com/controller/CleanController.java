@@ -86,4 +86,14 @@ public class CleanController {
 
     }
 
+    /**
+     * 添加点击量
+     */
+    @PostMapping("/addClicked")
+    public ResultVO addClicked(@RequestParam(value = "id") Integer id) {
+        cleanService.addClicked(id);
+        return ResultVOUtil.success();
+
+    }
+
 }

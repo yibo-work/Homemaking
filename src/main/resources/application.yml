@@ -21,3 +21,6 @@ mybatis:
     map-underscore-to-camel-case: true
     #开启二级缓存
     cache-enabled: true
+logging:
+  level:
+    com: DEBUG

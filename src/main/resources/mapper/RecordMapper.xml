@@ -4,23 +4,35 @@
 <mapper namespace="com.dao.RecordDao">
 
     <select id="findById" resultType="com.model.Record">
-        select `id`,
+        select a.`id`,
                `score`,
                `service_id`,
-               `service_name`,
+               s.name as `service_name`,
                `user_id`,
-               `user_name`,
+               d.name as `user_name`,
                `create_time`,
                `update_time`
-        from record
-        where id = #{id}
+        from record a
+                 left join user s ON s.id = a.user_id
+                 left join user d ON d.id = a.service_id
+        where a.id = #{id}
     </select>
 
     <select id="findByMap" resultType="com.model.Record">
-        select `id`,`score`,`service_id`,`service_name`,`user_id`,`user_name`,`create_time`,`update_time` from record
+        select a.`id`,
+        `score`,
+        `service_id`,
+        s.name as `service_name`,
+        `user_id`,
+        d.name as `user_name`,
+        `create_time`,
+        `update_time`
+        from record a
+        left join user s ON s.id = a.user_id
+        left join user d ON d.id = a.service_id
         <where>
             <if test="id != null and id != ''">
-                and id = #{id}
+                and a.id = #{id}
             </if>
             <if test="score != null and score != ''">
                 and score = #{score}
@@ -28,14 +40,8 @@
             <if test="serviceId != null and serviceId != ''">
                 and service_id = #{serviceId}
             </if>
-            <if test="serviceName != null and serviceName != ''">
-                and service_name = #{serviceName}
-            </if>
             <if test="userId != null and userId != ''">
                 and user_id = #{userId}
-            </if>
-            <if test="userName != null and userName != ''">
-                and user_name = #{userName}
             </if>
             <if test="createTime != null and createTime != ''">
                 and create_time = #{createTime}
@@ -47,9 +53,19 @@
     </select>
 
     <select id="list" resultType="com.model.Record">
-        select `id`,`score`,`service_id`,`service_name`,`user_id`,`user_name`,`create_time`,`update_time` from record
+        select a.`id`,
+        `score`,
+        `service_id`,
+        s.name as `service_name`,
+        `user_id`,
+        d.name as `user_name`,
+        `create_time`,
+        `update_time`
+        from record a
+        left join user s ON s.id = a.user_id
+        left join user d ON d.id = a.service_id
         <where>
-            <if test="id != null and id != ''">and id =
+            <if test="id != null and id != ''">and a.id =
                 #{id}
             </if>
             <if test="score != null and score != ''">and score =
@@ -58,14 +74,8 @@
             <if test="serviceId != null and serviceId != ''">and service_id =
                 #{serviceId}
             </if>
-            <if test="serviceName != null and serviceName != ''">and service_name =
-                #{serviceName}
-            </if>
             <if test="userId != null and userId != ''">and user_id =
                 #{userId}
-            </if>
-            <if test="userName != null and userName != ''">and user_name =
-                #{userName}
             </if>
             <if test="createTime != null and createTime != ''">and create_time =
                 #{createTime}
@@ -81,9 +91,7 @@
         <trim suffixOverrides=",">
             <if test="score != null">`score`,</if>
             <if test="serviceId != null">`service_id`,</if>
-            <if test="serviceName != null">`service_name`,</if>
             <if test="userId != null">`user_id`,</if>
-            <if test="userName != null">`user_name`,</if>
             <if test="createTime != null">`create_time`,</if>
             <if test="updateTime != null">`update_time`</if>
         </trim>
@@ -92,9 +100,7 @@
         <trim suffixOverrides=",">
             <if test="score != null">#{score},</if>
             <if test="serviceId != null">#{serviceId},</if>
-            <if test="serviceName != null">#{serviceName},</if>
             <if test="userId != null">#{userId},</if>
-            <if test="userName != null">#{userName},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="updateTime != null">#{updateTime}</if>
         </trim>
@@ -110,13 +116,7 @@
             <if test="serviceId != null">`service_id` = #{serviceId}
                 ,
             </if>
-            <if test="serviceName != null">`service_name` = #{serviceName}
-                ,
-            </if>
             <if test="userId != null">`user_id` = #{userId}
-                ,
-            </if>
-            <if test="userName != null">`user_name` = #{userName}
                 ,
             </if>
             <if test="createTime != null">`create_time` = #{createTime}

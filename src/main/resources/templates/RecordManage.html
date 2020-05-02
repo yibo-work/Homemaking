@@ -28,21 +28,18 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12" id="vmRecord">
             <div class="layui-card">
-
-                <div class="layui-card-header">
+                <!--<div class="layui-card-header">
                     <button class="layui-btn" onclick="xadmin.open('添加分值记录','/recordAdd',500,700)">
                         <i class="layui-icon"></i>添加分值记录
                     </button>
-                </div>
+                </div>-->
                 <div class="layui-card-body">
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
                             <th>序号</th>
                             <th>评分</th>
-                            <th>家政编号</th>
                             <th>家政名称</th>
-                            <th>用户编号</th>
                             <th>用户名称</th>
                             <th>追加时间</th>
                             <th>修改时间</th>
@@ -53,9 +50,7 @@
                         <tr v-for="record,i in pageInfo.list">
                             <td v-text="i+1"></td>
                             <td v-text="record.score"></td>
-                            <td v-text="record.serviceId"></td>
                             <td v-text="record.serviceName"></td>
-                            <td v-text="record.userId"></td>
                             <td v-text="record.userName"></td>
                             <td v-text="record.createTime"></td>
                             <td v-text="record.updateTime"></td>
@@ -63,7 +58,7 @@
                                 <button @click="editRecord(record.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editRecord"
-                                        onclick="xadmin.open('编辑分值记录','/recordEdit',500,700)">
+                                        onclick="xadmin.open('编辑分值记录','/recordEdit',500,300)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewRecord(record.id)"

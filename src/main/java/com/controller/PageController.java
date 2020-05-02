@@ -153,7 +153,7 @@ public class PageController {
 
     @GetMapping("/toMeComment")
     public String toMeComment() {
-        return "toMeComment";
+        return "ToMeComment";
     }
 
 
@@ -203,8 +203,18 @@ public class PageController {
         return "orderView";
     }
 
+    @GetMapping("/myOrder")
+    public String myOrder() {
+        return "myOrder";
+    }
+
+    @GetMapping("/toMeOrder")
+    public String toMeOrder() {
+        return "toMeOrder";
+    }
+
     /**
-     * 预约订单管理
+     * 分值记录
      */
     @GetMapping("/recordManage")
     public String recordManage() {
