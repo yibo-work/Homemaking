@@ -39,35 +39,35 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>标题</th>
-                                                                                                <th>内容</th>
-                                                                                                <th>描述</th>
-                                                                                                <th>新闻类型</th>
-                                                                                                <th>创建时间</th>
-                                                                                                <th>修改时间</th>
-                                                                        <th>操作</th>
+                            <th>标题</th>
+                            <th>内容</th>
+                            <th>描述</th>
+                            <th>新闻类型</th>
+                            <th>创建时间</th>
+                            <th>修改时间</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="news,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="news.title"></td>
-                                                                                                            <td v-text="news.content"></td>
-                                                                                                            <td v-text="news.description"></td>
-                                                                                                            <td v-text="news.type"></td>
-                                                                                                            <td v-text="news.createTime"></td>
-                                                                                                            <td v-text="news.updateTime"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="news.title"></td>
+                            <td v-text="news.content"></td>
+                            <td v-text="news.description"></td>
+                            <td v-text="news.type"></td>
+                            <td v-text="news.createTime"></td>
+                            <td v-text="news.updateTime"></td>
+                            <td class="td-manage">
                                 <button @click="editNews(news.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editNews"
-                                        onclick="xadmin.open('编辑新闻信息','/newsEdit',700,350)">
+                                        onclick="xadmin.open('编辑新闻信息','/newsEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewNews(news.id)"
                                         class="layui-btn"
                                         id="viewNews"
-                                        onclick="xadmin.open('新闻信息详情','/newsView',700,350)">
+                                        onclick="xadmin.open('新闻信息详情','/newsView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
                                 <button @click="delNews(news.id)"
@@ -140,31 +140,31 @@
              */
             delNews: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/news/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/news/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *
@@ -178,7 +178,7 @@
              *
              * 新闻信息详情
              */
-            viewNews: function (editNewsId) {
+            viewNews: function (viewNewsId) {
                 //把要修改的viewNewsId存到sessionStorage中
                 sessionStorage.setItem("viewNewsId", viewNewsId);
             }

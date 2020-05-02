@@ -39,43 +39,43 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>服务名称</th>
-                                                                                                <th>服务内容</th>
-                                                                                                <th>服务描述</th>
-                                                                                                <th>价格</th>
-                                                                                                <th>发布人</th>
-                                                                                                <th>服务分类编号</th>
-                                                                                                <th>类型</th>
-                                                                                                <th>状态</th>
-                                                                                                <th>发布时间</th>
-                                                                                                <th>修改时间</th>
-                                                                        <th>操作</th>
+                            <th>服务名称</th>
+                            <th>服务内容</th>
+                            <th>服务描述</th>
+                            <th>价格</th>
+                            <th>发布人</th>
+                            <th>服务分类编号</th>
+                            <th>类型</th>
+                            <th>状态</th>
+                            <th>发布时间</th>
+                            <th>修改时间</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="clean,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="clean.cleanName"></td>
-                                                                                                            <td v-text="clean.content"></td>
-                                                                                                            <td v-text="clean.description"></td>
-                                                                                                            <td v-text="clean.price"></td>
-                                                                                                            <td v-text="clean.userId"></td>
-                                                                                                            <td v-text="clean.categoryId"></td>
-                                                                                                            <td v-text="clean.type"></td>
-                                                                                                            <td v-text="clean.status"></td>
-                                                                                                            <td v-text="clean.createTime"></td>
-                                                                                                            <td v-text="clean.updateTime"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="clean.cleanName"></td>
+                            <td v-text="clean.content"></td>
+                            <td v-text="clean.description"></td>
+                            <td v-text="clean.price"></td>
+                            <td v-text="clean.userId"></td>
+                            <td v-text="clean.categoryId"></td>
+                            <td v-text="clean.type"></td>
+                            <td v-text="clean.status"></td>
+                            <td v-text="clean.createTime"></td>
+                            <td v-text="clean.updateTime"></td>
+                            <td class="td-manage">
                                 <button @click="editClean(clean.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editClean"
-                                        onclick="xadmin.open('编辑清洁服务','/cleanEdit',700,350)">
+                                        onclick="xadmin.open('编辑清洁服务','/cleanEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewClean(clean.id)"
                                         class="layui-btn"
                                         id="viewClean"
-                                        onclick="xadmin.open('清洁服务详情','/cleanView',700,350)">
+                                        onclick="xadmin.open('清洁服务详情','/cleanView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
                                 <button @click="delClean(clean.id)"
@@ -148,31 +148,31 @@
              */
             delClean: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/clean/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/clean/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *
@@ -186,7 +186,7 @@
              *
              * 清洁服务详情
              */
-            viewClean: function (editCleanId) {
+            viewClean: function (viewCleanId) {
                 //把要修改的viewCleanId存到sessionStorage中
                 sessionStorage.setItem("viewCleanId", viewCleanId);
             }

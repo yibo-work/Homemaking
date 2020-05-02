@@ -39,41 +39,41 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>用户名</th>
-                                                                                                <th>密码</th>
-                                                                                                <th>年龄</th>
-                                                                                                <th>性别</th>
-                                                                                                <th>电话</th>
-                                                                                                <th>住址</th>
-                                                                                                <th>QQ</th>
-                                                                                                <th>电子邮件</th>
-                                                                                                <th>角色</th>
-                                                                        <th>操作</th>
+                            <th>用户名</th>
+                            <th>密码</th>
+                            <th>年龄</th>
+                            <th>性别</th>
+                            <th>电话</th>
+                            <th>住址</th>
+                            <th>QQ</th>
+                            <th>电子邮件</th>
+                            <th>角色</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="user,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="user.name"></td>
-                                                                                                            <td v-text="user.password"></td>
-                                                                                                            <td v-text="user.age"></td>
-                                                                                                            <td v-text="user.sex"></td>
-                                                                                                            <td v-text="user.phone"></td>
-                                                                                                            <td v-text="user.address"></td>
-                                                                                                            <td v-text="user.qq"></td>
-                                                                                                            <td v-text="user.email"></td>
-                                                                                                            <td v-text="user.roleId"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="user.name"></td>
+                            <td v-text="user.password"></td>
+                            <td v-text="user.age"></td>
+                            <td v-text="user.sex"></td>
+                            <td v-text="user.phone"></td>
+                            <td v-text="user.address"></td>
+                            <td v-text="user.qq"></td>
+                            <td v-text="user.email"></td>
+                            <td v-text="user.roleId"></td>
+                            <td class="td-manage">
                                 <button @click="editUser(user.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editUser"
-                                        onclick="xadmin.open('编辑用户','/userEdit',700,350)">
+                                        onclick="xadmin.open('编辑用户','/userEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewUser(user.id)"
                                         class="layui-btn"
                                         id="viewUser"
-                                        onclick="xadmin.open('用户详情','/userView',700,350)">
+                                        onclick="xadmin.open('用户详情','/userView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
                                 <button @click="delUser(user.id)"
@@ -146,31 +146,31 @@
              */
             delUser: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/user/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/user/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *
@@ -184,7 +184,7 @@
              *
              * 用户详情
              */
-            viewUser: function (editUserId) {
+            viewUser: function (viewUserId) {
                 //把要修改的viewUserId存到sessionStorage中
                 sessionStorage.setItem("viewUserId", viewUserId);
             }

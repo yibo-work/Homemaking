@@ -39,33 +39,33 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>分类名称</th>
-                                                                                                <th>分类描述</th>
-                                                                                                <th>状态</th>
-                                                                                                <th>创建时间</th>
-                                                                                                <th>修改时间</th>
-                                                                        <th>操作</th>
+                            <th>分类名称</th>
+                            <th>分类描述</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>修改时间</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="category,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="category.categoryName"></td>
-                                                                                                            <td v-text="category.description"></td>
-                                                                                                            <td v-text="category.status"></td>
-                                                                                                            <td v-text="category.createTime"></td>
-                                                                                                            <td v-text="category.updateTime"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="category.categoryName"></td>
+                            <td v-text="category.description"></td>
+                            <td v-text="category.status"></td>
+                            <td v-text="category.createTime"></td>
+                            <td v-text="category.updateTime"></td>
+                            <td class="td-manage">
                                 <button @click="editCategory(category.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editCategory"
-                                        onclick="xadmin.open('编辑服务分类','/categoryEdit',700,350)">
+                                        onclick="xadmin.open('编辑服务分类','/categoryEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewCategory(category.id)"
                                         class="layui-btn"
                                         id="viewCategory"
-                                        onclick="xadmin.open('服务分类详情','/categoryView',700,350)">
+                                        onclick="xadmin.open('服务分类详情','/categoryView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
                                 <button @click="delCategory(category.id)"
@@ -138,31 +138,31 @@
              */
             delCategory: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/category/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/category/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *
@@ -176,7 +176,7 @@
              *
              * 服务分类详情
              */
-            viewCategory: function (editCategoryId) {
+            viewCategory: function (viewCategoryId) {
                 //把要修改的viewCategoryId存到sessionStorage中
                 sessionStorage.setItem("viewCategoryId", viewCategoryId);
             }

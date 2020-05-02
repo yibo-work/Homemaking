@@ -39,43 +39,43 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>分类名称</th>
-                                                                                                <th>服务名称</th>
-                                                                                                <th>分类编号</th>
-                                                                                                <th>服务编号</th>
-                                                                                                <th>用户编号</th>
-                                                                                                <th>用户名称</th>
-                                                                                                <th>家政编号</th>
-                                                                                                <th>家政名称</th>
-                                                                                                <th>状态</th>
-                                                                                                <th>添加时间</th>
-                                                                        <th>操作</th>
+                            <th>分类名称</th>
+                            <th>服务名称</th>
+                            <th>分类编号</th>
+                            <th>服务编号</th>
+                            <th>用户编号</th>
+                            <th>用户名称</th>
+                            <th>家政编号</th>
+                            <th>家政名称</th>
+                            <th>状态</th>
+                            <th>添加时间</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="order,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="order.categoryName"></td>
-                                                                                                            <td v-text="order.cleanName"></td>
-                                                                                                            <td v-text="order.categoryId"></td>
-                                                                                                            <td v-text="order.cleanId"></td>
-                                                                                                            <td v-text="order.userId"></td>
-                                                                                                            <td v-text="order.userName"></td>
-                                                                                                            <td v-text="order.serviceId"></td>
-                                                                                                            <td v-text="order.serviceName"></td>
-                                                                                                            <td v-text="order.status"></td>
-                                                                                                            <td v-text="order.createTime"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="order.categoryName"></td>
+                            <td v-text="order.cleanName"></td>
+                            <td v-text="order.categoryId"></td>
+                            <td v-text="order.cleanId"></td>
+                            <td v-text="order.userId"></td>
+                            <td v-text="order.userName"></td>
+                            <td v-text="order.serviceId"></td>
+                            <td v-text="order.serviceName"></td>
+                            <td v-text="order.status"></td>
+                            <td v-text="order.createTime"></td>
+                            <td class="td-manage">
                                 <button @click="editOrder(order.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editOrder"
-                                        onclick="xadmin.open('编辑服务订单','/orderEdit',700,350)">
+                                        onclick="xadmin.open('编辑服务订单','/orderEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewOrder(order.id)"
                                         class="layui-btn"
                                         id="viewOrder"
-                                        onclick="xadmin.open('服务订单详情','/orderView',700,350)">
+                                        onclick="xadmin.open('服务订单详情','/orderView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
                                 <button @click="delOrder(order.id)"
@@ -148,31 +148,31 @@
              */
             delOrder: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/order/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/order/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *
@@ -186,7 +186,7 @@
              *
              * 服务订单详情
              */
-            viewOrder: function (editOrderId) {
+            viewOrder: function (viewOrderId) {
                 //把要修改的viewOrderId存到sessionStorage中
                 sessionStorage.setItem("viewOrderId", viewOrderId);
             }

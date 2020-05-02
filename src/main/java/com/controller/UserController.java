@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.enums.ResultFailureEnum;
 import com.github.pagehelper.PageInfo;
 import com.model.User;
 import com.service.UserService;
@@ -9,7 +10,10 @@ import com.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户Controller
@@ -21,6 +25,43 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping("/login")
+    public ResultVO login(@RequestBody User loginUser, HttpSession session) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", loginUser.getName());
+        map.put("password", loginUser.getPassword());
+        User user = userService.findByMap(map);
+        if (user != null) {
+            session.setAttribute("USER", user);
+            return ResultVOUtil.success();
+        } else {
+            return ResultVOUtil.failure(ResultFailureEnum.LOGIN_ERROR);
+        }
+
+    }
+
+    @RequestMapping("/loginOut")
+    public void loginOut(HttpSession session) {
+        session.removeAttribute("USER");
+        session.invalidate();
+    }
+
+    @RequestMapping("/register")
+    public ResultVO register(@RequestBody User user, HttpSession session) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", user.getName());
+        User findUser = userService.findByMap(map);
+        if (findUser != null) {
+            return ResultVOUtil.failure(ResultFailureEnum.REGISTER_ERROR);
+        } else {
+            userService.save(user);
+            session.setAttribute("USER", user);
+            return ResultVOUtil.success();
+        }
+
+    }
 
     /**
      * 查询用户页面

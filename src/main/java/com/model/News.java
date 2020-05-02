@@ -1,7 +1,7 @@
 package com.model;
 
 import lombok.Data;
-
+import java.util.Date;
 import java.io.Serializable;
 
 /**

@@ -17,62 +17,62 @@
 <div class="layui-fluid" id="vmUpdateCategory">
     <div class="layui-row">
         <form class="layui-form">
-                                                                            <div class="layui-form-item">
-                        <label class="layui-form-label" for="categoryName">
-                            <span class="x-red">*</span>分类名称
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <input class="layui-input" id="categoryName"  name="categoryName"
-                                       lay-verify="required"   type="text"  v-model="category.categoryName">
-                            </div>
-                        </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="categoryName">
+                    <span class="x-red">*</span>分类名称
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="categoryName" lay-verify="required"
+                               name="categoryName" type="text" v-model="category.categoryName">
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="description">
-                            <span class="x-red">*</span>分类描述
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <input class="layui-input" id="description"  name="description"
-                                       lay-verify="required"   type="text"  v-model="category.description">
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="description">
+                    <span class="x-red">*</span>分类描述
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="description" lay-verify="required"
+                               name="description" type="text" v-model="category.description">
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="status">
-                            <span class="x-red">*</span>状态
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <input class="layui-input" id="status"  name="status"
-                                       lay-verify="required"   type="text"  v-model="category.status">
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="status">
+                    <span class="x-red">*</span>状态
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="status" lay-verify="required"
+                               name="status" type="text" v-model="category.status">
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="createTime">
-                            <span class="x-red">*</span>创建时间
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <input class="layui-input" id="createTime"  name="createTime"
-                                       lay-verify="required"   type="text"  v-model="category.createTime">
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="createTime">
+                    <span class="x-red">*</span>创建时间
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="createTime" lay-verify="required"
+                               name="createTime" type="text" v-model="category.createTime">
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="updateTime">
-                            <span class="x-red">*</span>修改时间
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <input class="layui-input" id="updateTime"  name="updateTime"
-                                       lay-verify="required"   type="text"  v-model="category.updateTime">
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="updateTime">
+                    <span class="x-red">*</span>修改时间
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="updateTime" lay-verify="required"
+                               name="updateTime" type="text" v-model="category.updateTime">
                     </div>
-                                        <div class="layui-form-item">
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-filter="edit" lay-submit="">
                     确认修改
@@ -113,44 +113,44 @@
     });
 
     layui.use(['form', 'layer', 'laydate'],
-            function () {
-                var form = layui.form,
-                        layer = layui.layer,
-                        laydate = layui.laydate;
+        function () {
+            var form = layui.form,
+                layer = layui.layer,
+                laydate = layui.laydate;
 
-                //监听提交
-                form.on('submit(edit)',
-                        function (data) {
+            //监听提交
+            form.on('submit(edit)',
+                function (data) {
 
-                            //组装数据
-                            data.field.id = editCategoryId;
+                    //组装数据
+                    data.field.id = editCategoryId;
 
-                            //发异步，把数据提交给controller
-                            $.ajax({
-                                url: "category/update",
-                                data: JSON.stringify(data.field),
-                                dataType: "json",
-                                contentType: "application/json",
-                                type: "put",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg("修改成功", {icon: 6, time: 500},
-                                                function () {
-                                                    //关闭当前frame
-                                                    xadmin.close();
-                                                    // 可以对父窗口进行刷新
-                                                    xadmin.father_reload();
-                                                });
-                                    } else {
-                                        layer.alert(result.msg);
-                                    }
-                                }
-                            });
+                    //发异步，把数据提交给controller
+                    $.ajax({
+                        url: "category/update",
+                        data: JSON.stringify(data.field),
+                        dataType: "json",
+                        contentType: "application/json",
+                        type: "put",
+                        success: function (result) {
+                            if (result.code === 200) {
+                                layer.msg("修改成功", {icon: 6, time: 500},
+                                    function () {
+                                        //关闭当前frame
+                                        xadmin.close();
+                                        // 可以对父窗口进行刷新
+                                        xadmin.father_reload();
+                                    });
+                            } else {
+                                layer.alert(result.msg);
+                            }
+                        }
+                    });
 
-                            return false;
-                        });
+                    return false;
+                });
 
-            });
+        });
 </script>
 </body>
 </html>

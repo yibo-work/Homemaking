@@ -39,31 +39,31 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>评论内容</th>
-                                                                                                <th>用户编号</th>
-                                                                                                <th>留言用户编号</th>
-                                                                                                <th>发布时间</th>
-                                                                        <th>操作</th>
+                            <th>评论内容</th>
+                            <th>用户编号</th>
+                            <th>留言用户编号</th>
+                            <th>发布时间</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="comment,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="comment.content"></td>
-                                                                                                            <td v-text="comment.userId"></td>
-                                                                                                            <td v-text="comment.commentUserId"></td>
-                                                                                                            <td v-text="comment.createTime"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="comment.content"></td>
+                            <td v-text="comment.userId"></td>
+                            <td v-text="comment.commentUserId"></td>
+                            <td v-text="comment.createTime"></td>
+                            <td class="td-manage">
                                 <button @click="editComment(comment.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editComment"
-                                        onclick="xadmin.open('编辑评论','/commentEdit',700,350)">
+                                        onclick="xadmin.open('编辑评论','/commentEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
                                 <button @click="viewComment(comment.id)"
                                         class="layui-btn"
                                         id="viewComment"
-                                        onclick="xadmin.open('评论详情','/commentView',700,350)">
+                                        onclick="xadmin.open('评论详情','/commentView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
                                 <button @click="delComment(comment.id)"
@@ -136,31 +136,31 @@
              */
             delComment: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/comment/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/comment/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *
@@ -174,7 +174,7 @@
              *
              * 评论详情
              */
-            viewComment: function (editCommentId) {
+            viewComment: function (viewCommentId) {
                 //把要修改的viewCommentId存到sessionStorage中
                 sessionStorage.setItem("viewCommentId", viewCommentId);
             }

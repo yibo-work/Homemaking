@@ -62,84 +62,6 @@ public class PageController {
         return "welcome";
     }
 
-
-    /**
-     * 下载拜访计划模板
-     */
-    @GetMapping("/planTemplateManage")
-    public String planTemplateManage() {
-        return "planTemplateManage";
-    }
-
-    @GetMapping("/customerManage")
-    public String customerManage() {
-        return "customerManage";
-    }
-
-    @GetMapping("/customerUpdate")
-    public String customerUpdate() {
-        return "customerUpdate";
-    }
-
-    @GetMapping("/customerAdd")
-    public String customerAdd() {
-        return "customerAdd";
-    }
-
-    /**
-     * MONTH
-     */
-    @GetMapping("/monthPlanManage")
-    public String monthPlanManage() {
-        return "monthPlanManage";
-    }
-
-    @GetMapping("/monthPlanUpdate")
-    public String monthPlanUpdate() {
-        return "monthPlanUpdate";
-    }
-
-    @GetMapping("/monthPlanAdd")
-    public String monthPlanAdd() {
-        return "monthPlanAdd";
-    }
-
-    /**
-     * QUARTER
-     */
-    @GetMapping("/quarterPlanManage")
-    public String quarterPlanManage() {
-        return "quarterPlanManage";
-    }
-
-    @GetMapping("/quarterPlanUpdate")
-    public String quarterPlanUpdate() {
-        return "quarterPlanUpdate";
-    }
-
-    @GetMapping("/quarterPlanAdd")
-    public String quarterPlanAdd() {
-        return "quarterPlanAdd";
-    }
-
-    /**
-     * YEAR
-     */
-    @GetMapping("/yearPlanManage")
-    public String yearPlanManage() {
-        return "yearPlanManage";
-    }
-
-    @GetMapping("/yearPlanUpdate")
-    public String yearPlanUpdate() {
-        return "yearPlanUpdate";
-    }
-
-    @GetMapping("/yearPlanAdd")
-    public String yearPlanAdd() {
-        return "yearPlanAdd";
-    }
-
     /**
      * 用户管理
      */
@@ -164,104 +86,100 @@ public class PageController {
     }
 
     /**
-     * 角色管理
+     * 家政服务管理
      */
-    @GetMapping("/roleManage")
-    public String roleManage() {
-        return "roleManage";
+    @GetMapping("/cleanManage")
+    public String cleanManage() {
+        return "cleanManage";
     }
 
-    @GetMapping("/roleUpdate")
-    public String roleUpdate() {
-        return "roleUpdate";
+    @GetMapping("/cleanAdd")
+    public String cleanAdd() {
+        return "cleanAdd";
+    }
+
+    @GetMapping("/cleanEdit")
+    public String cleanEdit() {
+        return "cleanEdit";
+    }
+
+    @GetMapping("/cleanView")
+    public String cleanView() {
+        return "cleanView";
+    }
+
+
+    /**
+     * 分类
+     */
+    @GetMapping("/categoryManage")
+    public String categoryManage() {
+        return "categoryManage";
+    }
+
+    @GetMapping("/categoryAdd")
+    public String categoryAdd() {
+        return "categoryAdd";
+    }
+
+    @GetMapping("/categoryEdit")
+    public String categoryEdit() {
+        return "categoryEdit";
+    }
+
+    @GetMapping("/categoryView")
+    public String categoryView() {
+        return "categoryView";
     }
 
     /**
-     * 拜访结果记录
+     * 留言管理
      */
-    @GetMapping("/resultAdd")
-    public String resultAdd() {
-        return "resultAdd";
+    @GetMapping("/commentManage")
+    public String commentManage() {
+        return "commentManage";
     }
 
-    /**
-     * 年计划详情
-     */
-    @GetMapping("/yearPlanView")
-    public String yearPlanView() {
-        return "yearPlanView";
+    @GetMapping("/commentAdd")
+    public String commentAdd() {
+        return "commentAdd";
     }
 
-    /**
-     * 年计划审批
-     */
-    @GetMapping("/yearPlanApprove")
-    public String yearPlanApprove() {
-        return "yearPlanApprove";
+    @GetMapping("/commentEdit")
+    public String commentEdit() {
+        return "commentEdit";
     }
 
-    /**
-     * 季度计划详情
-     */
-    @GetMapping("/quarterPlanView")
-    public String quarterPlanView() {
-        return "quarterPlanView";
+    @GetMapping("/commentView")
+    public String commentView() {
+        return "commentView";
     }
 
-    /**
-     * 月计划详情
-     */
-    @GetMapping("/monthPlanView")
-    public String monthPlanView() {
-        return "monthPlanView";
-    }
 
     /**
-     * 无预约客户统计
+     * 资讯管理
      */
-    @GetMapping("/customerNoResult")
-    public String customerNoResult() {
-        return "customerNoResult";
+    @GetMapping("/newsManage")
+    public String newsManage() {
+        return "newsManage";
     }
 
-    /**
-     * 无预约客户统计
-     */
-    @GetMapping("/customerResult")
-    public String customerResult() {
-        return "customerResult";
+    @GetMapping("/newsAdd")
+    public String newsAdd() {
+        return "newsAdd";
     }
 
-    /**
-     * 客户经理拜访情况统计
-     */
-    @GetMapping("/userResult")
-    public String userResult() {
-        return "userResult";
+    @GetMapping("/newsEdit")
+    public String newsEdit() {
+        return "newsEdit";
     }
 
-    /**
-     * 反馈详情
-     */
-    @GetMapping("/resultView")
-    public String resultView() {
-        return "resultView";
+    @GetMapping("/newsView")
+    public String newsView() {
+        return "newsView";
     }
 
-    /**
-     * 添加拜访记录
-     */
-    @GetMapping("/resultManage")
-    public String resultManage() {
-        return "resultManage";
-    }
 
-    /**
-     * 客户列表
-     */
-    @GetMapping("/customerList")
-    public String customerList() {
-        return "customerList";
-    }
+
 
 }

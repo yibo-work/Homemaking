@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>代码文件查重系统</title>
+    <title>家政服务管理系统</title>
     <meta content="webkit|ie-comp|ie-stand" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -22,13 +22,17 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a target="_top" th:href="@{/index}">代码文件查重系统</a></div>
+        <a target="_top" th:href="@{/index}">家政服务管理系统</a></div>
     <div class="left_open">
         <a><i class="iconfont" title="展开左侧栏">&#xe699;</i></a>
     </div>
     <ul class="layui-nav right">
         <li class="layui-nav-item">
-            <a href="javascript:" th:text="${session.USER.username}">admin</a>
+            <a href="javascript:void(0)"
+               th:text="${session.USER.name}">admin
+                【<span th:text="${session.USER.roleId == 1}">管理员</span>
+                <span th:text="${session.USER.roleId == 2}">用人单位</span>
+                <span th:text="${session.USER.roleId == 3}">家政服务人员</span>】</a>
             <dl class="layui-nav-child">
                 <dd>
                     <a th:href="@{/loginOut}">退出</a></dd>
@@ -42,34 +46,29 @@
 <div class="left-nav">
     <div id="side-nav">
         <ul id="nav">
-            <li th:if="${session.USER.role == 1}">
+            <li th:if="${session.USER.roleId == 1}">
                 <a href="javascript:void(0)">
                     <i class="iconfont left-nav-li" lay-tips="用户模块">&#xe726;</i>
                     <cite>用户模块</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('查看我的代码文件','paperList')">
+                        <a onclick="xadmin.add_tab('用户管理','userManage')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>查看我的代码文件</cite></a>
+                            <cite>用户管理</cite></a>
                     </li>
                 </ul>
             </li>
-            <li th:if="${session.USER.role == 2}">
+            <li th:if="${session.USER.roleId == 1}">
                 <a href="javascript:void(0)">
-                    <i class="iconfont left-nav-li" lay-tips="管理员模块">&#xe6b8;</i>
-                    <cite>管理员模块</cite>
+                    <i class="iconfont left-nav-li" lay-tips="家政服务类别">&#xe6b8;</i>
+                    <cite>家政服务类别</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('系统代码文件','systemPaperManage')">
+                        <a onclick="xadmin.add_tab('家政服务类别','categoryManage')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>系统代码文件</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('学生代码文件','userPaperManage')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>学生代码文件</cite></a>
+                            <cite>家政服务类别</cite></a>
                     </li>
                 </ul>
             </li>
