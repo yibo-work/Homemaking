@@ -85,6 +85,19 @@
                     </li>
                 </ul>
             </li>
+            <li th:if="${session.USER.roleId != 1}">
+                <a href="javascript:void(0)">
+                    <i class="iconfont left-nav-li" lay-tips="家政需求管理">&#xe6b8;</i>
+                    <cite>家政需求管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a onclick="xadmin.add_tab('家政需求管理','cleanManage')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>家政需求管理</cite></a>
+                    </li>
+                </ul>
+            </li>
             <li th:if="${session.USER.roleId == 1}">
                 <a href="javascript:void(0)">
                     <i class="iconfont left-nav-li" lay-tips="家政资讯数据">&#xe6b8;</i>

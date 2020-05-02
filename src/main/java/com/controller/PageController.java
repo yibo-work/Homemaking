@@ -29,12 +29,12 @@ public class PageController {
     @GetMapping("/index")
     public String index(HttpSession session, Model model) {
         //默认，不用登录，测试用
-        User user = new User();
+        /*User user = new User();
         user.setId(1);
         user.setRoleId(1);
         user.setName("chen");
         user.setPassword("123qwe");
-        session.setAttribute("USER", user);
+        session.setAttribute("USER", user);*/
 
         return "index";
     }

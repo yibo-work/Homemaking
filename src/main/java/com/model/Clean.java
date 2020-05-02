@@ -6,11 +6,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 清洁服务
+ * 需求/服务
+ *
  * @author Clrvn
  */
 @Data
-public class Clean implements Serializable{
+public class Clean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,7 +21,7 @@ public class Clean implements Serializable{
     private Integer id;
 
     /**
-     * 服务名称
+     * 服务/需求名称
      */
     private String cleanName;
 
@@ -43,11 +44,19 @@ public class Clean implements Serializable{
      * 发布人
      */
     private Integer userId;
+    /**
+     * 发布人
+     */
+    private String userName;
 
     /**
      * 服务分类编号
      */
     private Integer categoryId;
+    /**
+     * 服务分类编号
+     */
+    private String categoryName;
 
     /**
      * 类型

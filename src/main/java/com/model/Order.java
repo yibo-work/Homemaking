@@ -24,7 +24,7 @@ public class Order implements Serializable{
     private String categoryName;
 
     /**
-     * 服务名称
+     * 服务/需求名称
      */
     private String cleanName;
 

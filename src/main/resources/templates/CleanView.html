@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>清洁服务详情</title>
+    <title>需求/服务详情</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -19,7 +19,7 @@
         <form class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label" for="cleanName">
-                    服务名称
+                    服务/需求名称
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
@@ -149,7 +149,7 @@
                     if (result.code === 200) {
                         _this.clean = result.data;
                     } else {
-                        layer.alert("获取修改清洁服务信息失败！");
+                        layer.alert("获取修改需求/服务信息失败！");
                     }
                 }
             });

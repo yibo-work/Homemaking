@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 清洁服务Controller
+ * 需求/服务Controller
  * @author Clrvn
  */
 @RestController
@@ -23,8 +23,8 @@ public class CleanController {
     private CleanService cleanService;
 
     /**
-     * 查询清洁服务页面
-     * @return 分页清洁服务数据
+     * 查询需求/服务页面
+     * @return 分页需求/服务数据
      */
     @GetMapping("/page")
     public PageInfo<Clean> page() {
@@ -32,7 +32,7 @@ public class CleanController {
     }
 
     /**
-     * 查询清洁服务列表
+     * 查询需求/服务列表
      */
     @GetMapping("/list")
     public ResultVO list() {
@@ -41,7 +41,7 @@ public class CleanController {
     }
 
     /**
-     * 通过id查询单个清洁服务
+     * 通过id查询单个需求/服务
      */
     @GetMapping("/findById")
     public ResultVO findById(@RequestParam(value = "id") Integer id) {
@@ -50,7 +50,7 @@ public class CleanController {
     }
 
     /**
-     * 通过map查询单个清洁服务
+     * 通过map查询单个需求/服务
      */
     @GetMapping("/findByMap")
     public ResultVO findByMap() {
@@ -59,7 +59,7 @@ public class CleanController {
     }
 
     /**
-     * 添加清洁服务
+     * 添加需求/服务
      */
     @PostMapping("/save")
     public ResultVO save(@RequestBody Clean clean) {
@@ -68,7 +68,7 @@ public class CleanController {
     }
 
     /**
-     * 修改清洁服务
+     * 修改需求/服务
      */
     @PutMapping("/update")
     public ResultVO update(@RequestBody Clean clean) {
@@ -77,7 +77,7 @@ public class CleanController {
     }
 
     /**
-     * 删除清洁服务
+     * 删除需求/服务
      */
     @DeleteMapping("/deleteById")
     public ResultVO deleteById(@RequestParam(value = "id") Integer id) {

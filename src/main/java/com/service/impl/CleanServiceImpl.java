@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 清洁服务ServiceImpl
+ * 需求/服务ServiceImpl
  * @author Clrvn
  */
 @Service
@@ -23,8 +23,8 @@ public class CleanServiceImpl implements CleanService {
     private CleanDao cleanDao;
 
     /**
-     * 查询清洁服务页面
-     * @return 分页清洁服务数据
+     * 查询需求/服务页面
+     * @return 分页需求/服务数据
      */
     @Override
     public PageInfo<Clean> page(RequestParamsUtil requestParamsUtil) {
@@ -33,7 +33,7 @@ public class CleanServiceImpl implements CleanService {
     }
 
     /**
-     * 查询清洁服务列表
+     * 查询需求/服务列表
      */
     @Override
     public List<Clean> list(Map<String, Object> map) {
@@ -42,7 +42,7 @@ public class CleanServiceImpl implements CleanService {
 
 
     /**
-     * 通过id查询单个清洁服务
+     * 通过id查询单个需求/服务
      */
     @Override
     public Clean findById(Integer id) {
@@ -50,7 +50,7 @@ public class CleanServiceImpl implements CleanService {
     }
 
     /**
-     * 通过map查询单个清洁服务
+     * 通过map查询单个需求/服务
      */
     @Override
     public Clean findByMap(Map<String, Object> map) {
@@ -58,7 +58,7 @@ public class CleanServiceImpl implements CleanService {
     }
 
     /**
-     * 新增清洁服务
+     * 新增需求/服务
      */
     @Override
     public int save(Clean clean) {
@@ -66,7 +66,7 @@ public class CleanServiceImpl implements CleanService {
     }
 
     /**
-     * 修改清洁服务
+     * 修改需求/服务
      */
     @Override
     public int update(Clean clean) {
@@ -74,7 +74,7 @@ public class CleanServiceImpl implements CleanService {
     }
 
     /**
-     * 删除清洁服务
+     * 删除需求/服务
      */
     @Override
     public int deleteById(Integer id) {

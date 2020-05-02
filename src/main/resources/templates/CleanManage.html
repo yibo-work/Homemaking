@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>清洁服务管理</title>
+    <title>需求/服务管理</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -28,10 +28,9 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12" id="vmClean">
             <div class="layui-card">
-
-                <div class="layui-card-header">
-                    <button class="layui-btn" onclick="xadmin.open('添加清洁服务','/cleanAdd',500,700)">
-                        <i class="layui-icon"></i>添加清洁服务
+                <div class="layui-card-header" th:if="${session.USER.roleId != 1}">
+                    <button class="layui-btn" onclick="xadmin.open('添加服务','/cleanAdd',500,700)">
+                        <i class="layui-icon"></i>添加需求/服务
                     </button>
                 </div>
                 <div class="layui-card-body">
@@ -39,12 +38,12 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>服务名称</th>
+                            <th>服务/需求名称</th>
                             <th>服务内容</th>
                             <th>服务描述</th>
-                            <th>价格</th>
+                            <th>价格（￥）</th>
                             <th>发布人</th>
-                            <th>服务分类编号</th>
+                            <th>服务分类</th>
                             <th>类型</th>
                             <th>状态</th>
                             <th>发布时间</th>
@@ -59,25 +58,36 @@
                             <td v-text="clean.content"></td>
                             <td v-text="clean.description"></td>
                             <td v-text="clean.price"></td>
-                            <td v-text="clean.userId"></td>
-                            <td v-text="clean.categoryId"></td>
-                            <td v-text="clean.type"></td>
-                            <td v-text="clean.status"></td>
+                            <td v-text="clean.userName"></td>
+                            <td v-text="clean.categoryName"></td>
+                            <td style="font-weight: bold" v-if="clean.type == 1">需求</td>
+                            <td style="font-weight: bold" v-if="clean.type == 2">服务</td>
+                            <td v-if="clean.status == 1"><span style="color: green">通过审核</span></td>
+                            <td style="color: #FFB800" v-if="clean.status == 0">待审核</td>
+                            <td style="color: red" v-if="clean.status == -1">审核未通过</td>
                             <td v-text="clean.createTime"></td>
                             <td v-text="clean.updateTime"></td>
                             <td class="td-manage">
                                 <button @click="editClean(clean.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editClean"
-                                        onclick="xadmin.open('编辑清洁服务','/cleanEdit',500,700)">
+                                        onclick="xadmin.open('编辑需求/服务','/cleanEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
-                                <button @click="viewClean(clean.id)"
+                                <button @click="approveClean(clean.id, 1)" class="layui-btn layui-btn-primary"
+                                        th:if="${session.USER.roleId == 1}" v-if="clean.status==0">
+                                    <i class="layui-icon layui-icon-ok"></i>通过审批
+                                </button>
+                                <button @click="approveClean(clean.id, -1)" class="layui-btn layui-btn-danger"
+                                        th:if="${session.USER.roleId == 1}" v-if="clean.status==0">
+                                    <i class="layui-icon layui-icon-close"></i>拒绝审批
+                                </button>
+                                <!--<button @click="viewClean(clean.id)"
                                         class="layui-btn"
                                         id="viewClean"
-                                        onclick="xadmin.open('清洁服务详情','/cleanView',500,700)">
+                                        onclick="xadmin.open('需求/服务详情','/cleanView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
-                                </button>
+                                </button>-->
                                 <button @click="delClean(clean.id)"
                                         class="layui-btn layui-btn-danger"
                                         id="delClean">
@@ -86,7 +96,7 @@
                             </td>
                         </tr>
                         <tr v-if="pageInfo.total == 0">
-                            <td colspan="100" style="text-align: center">暂无清洁服务信息！</td>
+                            <td colspan="100" style="text-align: center">暂无需求/服务信息！</td>
                         </tr>
                         </tbody>
                     </table>
@@ -118,10 +128,9 @@
     </div>
 </div>
 </body>
-<script type="text/javascript">
+<script th:inline="javascript" type="text/javascript">
 
-    layui.use(['form'], function () {
-    });
+    var sessionUser = [[${session.USER}]];
 
     vm = new Vue({
         el: "#vmClean",
@@ -139,12 +148,16 @@
                     url += "&pageSize=" + pageSize;
                 }
 
+                if (sessionUser.roleId !== 1) {
+                    url += "&userId=" + sessionUser.id;
+                }
+
                 $.getJSON(url, function (data) {
                     _this.pageInfo = data;
                 });
             },
             /**
-             * 删除清洁服务
+             * 删除需求/服务
              */
             delClean: function (id) {
                 layer.confirm('确认要删除吗？',
@@ -175,8 +188,42 @@
                     });
             },
             /**
+             * 审批需求/服务
+             */
+            approveClean: function (id, status) {
+                layer.confirm('确认吗？',
+                    function () {
+                        var clean = {};
+                        clean.id = id;
+                        clean.status = status;
+
+                        //发异步删除数据
+                        $.ajax({
+                            url: "clean/update",
+                            data: JSON.stringify(clean),
+                            dataType: "json",
+                            contentType: "application/json",
+                            type: "put",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('审批成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
+                                }
+                            }
+                        });
+
+                    });
+            },
+            /**
              *
-             * 修改清洁服务
+             * 修改需求/服务
              */
             editClean: function (editCleanId) {
                 //把要修改的editCleanId存到sessionStorage中
@@ -184,7 +231,7 @@
             },
             /**
              *
-             * 清洁服务详情
+             * 需求/服务详情
              */
             viewClean: function (viewCleanId) {
                 //把要修改的viewCleanId存到sessionStorage中
@@ -194,6 +241,9 @@
         created: function () {
             this.getPage(1, 5);
         }
+    });
+
+    layui.use(['form'], function () {
     });
 
 </script>
