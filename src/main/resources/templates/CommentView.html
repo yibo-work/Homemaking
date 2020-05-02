@@ -23,9 +23,10 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="comment.content" class="layui-input" id="content"
-                               name="content"
-                               readonly type="text">
+                                                                    <textarea class="layui-textarea" id="content"
+                                                                              name="content"
+                                                                              readonly rows="4"
+                                                                              v-model="comment.content">></textarea>
                     </div>
                 </div>
             </div>
@@ -35,9 +36,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="comment.userId" class="layui-input" id="userId"
-                               name="userId"
-                               readonly type="text">
+                        <input class="layui-input" id="userId" name="userId"
+                               readonly type="text" v-model="comment.userId">
                     </div>
                 </div>
             </div>
@@ -47,9 +47,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="comment.commentUserId" class="layui-input" id="commentUserId"
-                               name="commentUserId"
-                               readonly type="text">
+                        <input class="layui-input" id="commentUserId" name="commentUserId"
+                               readonly type="text" v-model="comment.commentUserId">
                     </div>
                 </div>
             </div>
@@ -59,9 +58,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="comment.createTime" class="layui-input" id="createTime"
-                               name="createTime"
-                               readonly type="text">
+                        <input class="layui-input" id="createTime" name="createTime"
+                               readonly type="text" v-model="comment.createTime">
                     </div>
                 </div>
             </div>
@@ -80,30 +78,33 @@
 
     vm = new Vue({
         el: "#vmViewComment",
-        data: {
-            comment: {}
-        },
-        methods: {},
-        created: function () {
-            var _this = this;
-            $.ajax({
-                url: "/comment/findById",
-                data: {
-                    "id": viewCommentId
-                },
-                dataType: "json",
-                type: "get",
-                success: function (result) {
-                    if (result.code === 200) {
-                        _this.comment = result.data;
-                    } else {
-                        layer.alert("获取修改评论信息失败！");
-                    }
+        data: {;
+    {
+    }
+    },
+    {
+    }
+    ,
+    created: function () {
+        var _this = this;
+        $.ajax({
+            url: "/comment/findById",
+            data: {
+                "id": viewCommentId
+            },
+            dataType: "json",
+            type: "get",
+            success: function (result) {
+                if (result.code === 200) {
+                    _this.comment = result.data;
+                } else {
+                    layer.alert("获取修改评论信息失败！");
                 }
-            });
+            }
+        });
 
-        }
-    });
+    }
+    })
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

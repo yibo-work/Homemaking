@@ -23,9 +23,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.name" class="layui-input" id="name"
-                               name="name"
-                               readonly type="text">
+                        <input class="layui-input" id="name" name="name"
+                               readonly type="text" v-model="user.name">
                     </div>
                 </div>
             </div>
@@ -35,9 +34,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.password" class="layui-input" id="password"
-                               name="password"
-                               readonly type="text">
+                        <input class="layui-input" id="password" name="password"
+                               readonly type="text" v-model="user.password">
                     </div>
                 </div>
             </div>
@@ -47,9 +45,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.age" class="layui-input" id="age"
-                               name="age"
-                               readonly type="text">
+                        <input class="layui-input" id="age" name="age"
+                               readonly type="text" v-model="user.age">
                     </div>
                 </div>
             </div>
@@ -59,9 +56,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.sex" class="layui-input" id="sex"
-                               name="sex"
-                               readonly type="text">
+                        <input class="layui-input" id="sex" name="sex"
+                               readonly type="text" v-model="user.sex">
                     </div>
                 </div>
             </div>
@@ -71,9 +67,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.phone" class="layui-input" id="phone"
-                               name="phone"
-                               readonly type="text">
+                        <input class="layui-input" id="phone" name="phone"
+                               readonly type="text" v-model="user.phone">
                     </div>
                 </div>
             </div>
@@ -83,9 +78,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.address" class="layui-input" id="address"
-                               name="address"
-                               readonly type="text">
+                        <input class="layui-input" id="address" name="address"
+                               readonly type="text" v-model="user.address">
                     </div>
                 </div>
             </div>
@@ -95,9 +89,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.qq" class="layui-input" id="qq"
-                               name="qq"
-                               readonly type="text">
+                        <input class="layui-input" id="qq" name="qq"
+                               readonly type="text" v-model="user.qq">
                     </div>
                 </div>
             </div>
@@ -107,9 +100,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.email" class="layui-input" id="email"
-                               name="email"
-                               readonly type="text">
+                        <input class="layui-input" id="email" name="email"
+                               readonly type="text" v-model="user.email">
                     </div>
                 </div>
             </div>
@@ -119,9 +111,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.roleId" class="layui-input" id="roleId"
-                               name="roleId"
-                               readonly type="text">
+                        <input class="layui-input" id="roleId" name="roleId"
+                               readonly type="text" v-model="user.roleId">
                     </div>
                 </div>
             </div>
@@ -140,30 +131,33 @@
 
     vm = new Vue({
         el: "#vmViewUser",
-        data: {
-            user: {}
-        },
-        methods: {},
-        created: function () {
-            var _this = this;
-            $.ajax({
-                url: "/user/findById",
-                data: {
-                    "id": viewUserId
-                },
-                dataType: "json",
-                type: "get",
-                success: function (result) {
-                    if (result.code === 200) {
-                        _this.user = result.data;
-                    } else {
-                        layer.alert("获取修改用户信息失败！");
-                    }
+        data: {;
+    {
+    }
+    },
+    {
+    }
+    ,
+    created: function () {
+        var _this = this;
+        $.ajax({
+            url: "/user/findById",
+            data: {
+                "id": viewUserId
+            },
+            dataType: "json",
+            type: "get",
+            success: function (result) {
+                if (result.code === 200) {
+                    _this.user = result.data;
+                } else {
+                    layer.alert("获取修改用户信息失败！");
                 }
-            });
+            }
+        });
 
-        }
-    });
+    }
+    })
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

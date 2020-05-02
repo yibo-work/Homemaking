@@ -23,9 +23,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="news.title" class="layui-input" id="title"
-                               name="title"
-                               readonly type="text">
+                        <input class="layui-input" id="title" name="title"
+                               readonly type="text" v-model="news.title">
                     </div>
                 </div>
             </div>
@@ -35,9 +34,10 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="news.content" class="layui-input" id="content"
-                               name="content"
-                               readonly type="text">
+                                                                    <textarea class="layui-textarea" id="content"
+                                                                              name="content"
+                                                                              readonly rows="4"
+                                                                              v-model="news.content">></textarea>
                     </div>
                 </div>
             </div>
@@ -47,9 +47,10 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="news.description" class="layui-input" id="description"
-                               name="description"
-                               readonly type="text">
+                                                                    <textarea class="layui-textarea" id="description"
+                                                                              name="description"
+                                                                              readonly rows="4"
+                                                                              v-model="news.description">></textarea>
                     </div>
                 </div>
             </div>
@@ -59,9 +60,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="news.type" class="layui-input" id="type"
-                               name="type"
-                               readonly type="text">
+                        <input class="layui-input" id="type" name="type"
+                               readonly type="text" v-model="news.type">
                     </div>
                 </div>
             </div>
@@ -71,9 +71,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="news.createTime" class="layui-input" id="createTime"
-                               name="createTime"
-                               readonly type="text">
+                        <input class="layui-input" id="createTime" name="createTime"
+                               readonly type="text" v-model="news.createTime">
                     </div>
                 </div>
             </div>
@@ -83,9 +82,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="news.updateTime" class="layui-input" id="updateTime"
-                               name="updateTime"
-                               readonly type="text">
+                        <input class="layui-input" id="updateTime" name="updateTime"
+                               readonly type="text" v-model="news.updateTime">
                     </div>
                 </div>
             </div>
@@ -104,30 +102,33 @@
 
     vm = new Vue({
         el: "#vmViewNews",
-        data: {
-            news: {}
-        },
-        methods: {},
-        created: function () {
-            var _this = this;
-            $.ajax({
-                url: "/news/findById",
-                data: {
-                    "id": viewNewsId
-                },
-                dataType: "json",
-                type: "get",
-                success: function (result) {
-                    if (result.code === 200) {
-                        _this.news = result.data;
-                    } else {
-                        layer.alert("获取修改新闻信息信息失败！");
-                    }
+        data: {;
+    {
+    }
+    },
+    {
+    }
+    ,
+    created: function () {
+        var _this = this;
+        $.ajax({
+            url: "/news/findById",
+            data: {
+                "id": viewNewsId
+            },
+            dataType: "json",
+            type: "get",
+            success: function (result) {
+                if (result.code === 200) {
+                    _this.news = result.data;
+                } else {
+                    layer.alert("获取修改新闻信息信息失败！");
                 }
-            });
+            }
+        });
 
-        }
-    });
+    }
+    })
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

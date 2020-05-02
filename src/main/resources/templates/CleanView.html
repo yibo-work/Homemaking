@@ -23,9 +23,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.cleanName" class="layui-input" id="cleanName"
-                               name="cleanName"
-                               readonly type="text">
+                        <input class="layui-input" id="cleanName" name="cleanName"
+                               readonly type="text" v-model="clean.cleanName">
                     </div>
                 </div>
             </div>
@@ -35,9 +34,9 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.content" class="layui-input" id="content"
-                               name="content"
-                               readonly type="text">
+                                                                    <textarea class="layui-textarea" id="content"
+                                                                              name="content"
+                                                                              readonly rows="4" v-model="clean.content">></textarea>
                     </div>
                 </div>
             </div>
@@ -47,9 +46,10 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.description" class="layui-input" id="description"
-                               name="description"
-                               readonly type="text">
+                                                                    <textarea class="layui-textarea" id="description"
+                                                                              name="description"
+                                                                              readonly rows="4"
+                                                                              v-model="clean.description">></textarea>
                     </div>
                 </div>
             </div>
@@ -59,9 +59,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.price" class="layui-input" id="price"
-                               name="price"
-                               readonly type="text">
+                        <input class="layui-input" id="price" name="price"
+                               readonly type="text" v-model="clean.price">
                     </div>
                 </div>
             </div>
@@ -71,9 +70,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.userId" class="layui-input" id="userId"
-                               name="userId"
-                               readonly type="text">
+                        <input class="layui-input" id="userId" name="userId"
+                               readonly type="text" v-model="clean.userId">
                     </div>
                 </div>
             </div>
@@ -83,9 +81,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.categoryId" class="layui-input" id="categoryId"
-                               name="categoryId"
-                               readonly type="text">
+                        <input class="layui-input" id="categoryId" name="categoryId"
+                               readonly type="text" v-model="clean.categoryId">
                     </div>
                 </div>
             </div>
@@ -95,9 +92,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.type" class="layui-input" id="type"
-                               name="type"
-                               readonly type="text">
+                        <input class="layui-input" id="type" name="type"
+                               readonly type="text" v-model="clean.type">
                     </div>
                 </div>
             </div>
@@ -107,9 +103,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.status" class="layui-input" id="status"
-                               name="status"
-                               readonly type="text">
+                        <input class="layui-input" id="status" name="status"
+                               readonly type="text" v-model="clean.status">
                     </div>
                 </div>
             </div>
@@ -119,9 +114,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.createTime" class="layui-input" id="createTime"
-                               name="createTime"
-                               readonly type="text">
+                        <input class="layui-input" id="createTime" name="createTime"
+                               readonly type="text" v-model="clean.createTime">
                     </div>
                 </div>
             </div>
@@ -131,9 +125,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="clean.updateTime" class="layui-input" id="updateTime"
-                               name="updateTime"
-                               readonly type="text">
+                        <input class="layui-input" id="updateTime" name="updateTime"
+                               readonly type="text" v-model="clean.updateTime">
                     </div>
                 </div>
             </div>
@@ -152,30 +145,33 @@
 
     vm = new Vue({
         el: "#vmViewClean",
-        data: {
-            clean: {}
-        },
-        methods: {},
-        created: function () {
-            var _this = this;
-            $.ajax({
-                url: "/clean/findById",
-                data: {
-                    "id": viewCleanId
-                },
-                dataType: "json",
-                type: "get",
-                success: function (result) {
-                    if (result.code === 200) {
-                        _this.clean = result.data;
-                    } else {
-                        layer.alert("获取修改清洁服务信息失败！");
-                    }
+        data: {;
+    {
+    }
+    },
+    {
+    }
+    ,
+    created: function () {
+        var _this = this;
+        $.ajax({
+            url: "/clean/findById",
+            data: {
+                "id": viewCleanId
+            },
+            dataType: "json",
+            type: "get",
+            success: function (result) {
+                if (result.code === 200) {
+                    _this.clean = result.data;
+                } else {
+                    layer.alert("获取修改清洁服务信息失败！");
                 }
-            });
+            }
+        });
 
-        }
-    });
+    }
+    })
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

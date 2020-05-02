@@ -11,6 +11,7 @@
                `sex`,
                `phone`,
                `address`,
+               `qq`,
                `email`,
                `role_id`
         from user
@@ -18,7 +19,7 @@
     </select>
 
     <select id="findByMap" resultType="com.model.User">
-        select `id`,`name`,`password`,`age`,`sex`,`phone`,`address`,`email`,`role_id` from user
+        select `id`,`name`,`password`,`age`,`sex`,`phone`,`address`,`qq`,`email`,`role_id` from user
         <where>
             <if test="id != null and id != ''">
                 and id = #{id}
@@ -41,6 +42,9 @@
             <if test="address != null and address != ''">
                 and address = #{address}
             </if>
+            <if test="qq != null and qq != ''">
+                and qq = #{qq}
+            </if>
             <if test="email != null and email != ''">
                 and email = #{email}
             </if>
@@ -51,7 +55,7 @@
     </select>
 
     <select id="list" resultType="com.model.User">
-        select `id`,`name`,`password`,`age`,`sex`,`phone`,`address`,`email`,`role_id` from user
+        select `id`,`name`,`password`,`age`,`sex`,`phone`,`address`,`qq`,`email`,`role_id` from user
         <where>
             <if test="id != null and id != ''">and id =
                 #{id}
@@ -74,6 +78,9 @@
             <if test="address != null and address != ''">and address =
                 #{address}
             </if>
+            <if test="qq != null and qq != ''">and qq =
+                #{qq}
+            </if>
             <if test="email != null and email != ''">and email =
                 #{email}
             </if>
@@ -91,6 +98,7 @@
         <if test="sex != null">`sex`,</if>
         <if test="phone != null">`phone`,</if>
         <if test="address != null">`address`,</if>
+        <if test="qq != null">`qq`,</if>
         <if test="email != null">`email`,</if>
         <if test="roleId != null">`role_id`</if>
         )
@@ -101,6 +109,7 @@
         <if test="sex != null">#{sex},</if>
         <if test="phone != null">#{phone},</if>
         <if test="address != null">#{address},</if>
+        <if test="qq != null">#{qq},</if>
         <if test="email != null">#{email},</if>
         <if test="roleId != null">#{roleId}</if>
         )
@@ -125,6 +134,9 @@
                 ,
             </if>
             <if test="address != null">`address` = #{address}
+                ,
+            </if>
+            <if test="qq != null">`qq` = #{qq}
                 ,
             </if>
             <if test="email != null">`email` = #{email}

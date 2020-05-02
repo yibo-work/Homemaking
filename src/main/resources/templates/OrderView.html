@@ -23,9 +23,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.categoryName" class="layui-input" id="categoryName"
-                               name="categoryName"
-                               readonly type="text">
+                        <input class="layui-input" id="categoryName" name="categoryName"
+                               readonly type="text" v-model="order.categoryName">
                     </div>
                 </div>
             </div>
@@ -35,9 +34,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.cleanName" class="layui-input" id="cleanName"
-                               name="cleanName"
-                               readonly type="text">
+                        <input class="layui-input" id="cleanName" name="cleanName"
+                               readonly type="text" v-model="order.cleanName">
                     </div>
                 </div>
             </div>
@@ -47,9 +45,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.categoryId" class="layui-input" id="categoryId"
-                               name="categoryId"
-                               readonly type="text">
+                        <input class="layui-input" id="categoryId" name="categoryId"
+                               readonly type="text" v-model="order.categoryId">
                     </div>
                 </div>
             </div>
@@ -59,9 +56,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.cleanId" class="layui-input" id="cleanId"
-                               name="cleanId"
-                               readonly type="text">
+                        <input class="layui-input" id="cleanId" name="cleanId"
+                               readonly type="text" v-model="order.cleanId">
                     </div>
                 </div>
             </div>
@@ -71,9 +67,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.userId" class="layui-input" id="userId"
-                               name="userId"
-                               readonly type="text">
+                        <input class="layui-input" id="userId" name="userId"
+                               readonly type="text" v-model="order.userId">
                     </div>
                 </div>
             </div>
@@ -83,9 +78,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.userName" class="layui-input" id="userName"
-                               name="userName"
-                               readonly type="text">
+                        <input class="layui-input" id="userName" name="userName"
+                               readonly type="text" v-model="order.userName">
                     </div>
                 </div>
             </div>
@@ -95,9 +89,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.serviceId" class="layui-input" id="serviceId"
-                               name="serviceId"
-                               readonly type="text">
+                        <input class="layui-input" id="serviceId" name="serviceId"
+                               readonly type="text" v-model="order.serviceId">
                     </div>
                 </div>
             </div>
@@ -107,9 +100,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.serviceName" class="layui-input" id="serviceName"
-                               name="serviceName"
-                               readonly type="text">
+                        <input class="layui-input" id="serviceName" name="serviceName"
+                               readonly type="text" v-model="order.serviceName">
                     </div>
                 </div>
             </div>
@@ -119,9 +111,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.status" class="layui-input" id="status"
-                               name="status"
-                               readonly type="text">
+                        <input class="layui-input" id="status" name="status"
+                               readonly type="text" v-model="order.status">
                     </div>
                 </div>
             </div>
@@ -131,9 +122,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="order.createTime" class="layui-input" id="createTime"
-                               name="createTime"
-                               readonly type="text">
+                        <input class="layui-input" id="createTime" name="createTime"
+                               readonly type="text" v-model="order.createTime">
                     </div>
                 </div>
             </div>
@@ -152,30 +142,33 @@
 
     vm = new Vue({
         el: "#vmViewOrder",
-        data: {
-            order: {}
-        },
-        methods: {},
-        created: function () {
-            var _this = this;
-            $.ajax({
-                url: "/order/findById",
-                data: {
-                    "id": viewOrderId
-                },
-                dataType: "json",
-                type: "get",
-                success: function (result) {
-                    if (result.code === 200) {
-                        _this.order = result.data;
-                    } else {
-                        layer.alert("获取修改服务订单信息失败！");
-                    }
+        data: {;
+    {
+    }
+    },
+    {
+    }
+    ,
+    created: function () {
+        var _this = this;
+        $.ajax({
+            url: "/order/findById",
+            data: {
+                "id": viewOrderId
+            },
+            dataType: "json",
+            type: "get",
+            success: function (result) {
+                if (result.code === 200) {
+                    _this.order = result.data;
+                } else {
+                    layer.alert("获取修改服务订单信息失败！");
                 }
-            });
+            }
+        });
 
-        }
-    });
+    }
+    })
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>
