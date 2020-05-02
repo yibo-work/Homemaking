@@ -16,7 +16,8 @@
                `type`,
                a.`status`,
                a.`create_time`,
-               a.`update_time`
+               a.`update_time`,
+               clicked
         from clean a
                  left join user u on a.user_id = u.id
                  left join category c on a.category_id = c.id
@@ -36,7 +37,8 @@
         `type`,
         a.`status`,
         a.`create_time`,
-        a.`update_time`
+        a.`update_time`,
+        clicked
         from clean a
         left join user u on a.user_id = u.id
         left join category c on a.category_id = c.id
@@ -84,7 +86,8 @@
         `type`,
         a.`status`,
         a.`create_time`,
-        a.`update_time`
+        a.`update_time`,
+        clicked
         from clean a
         left join user u on a.user_id = u.id
         left join category c on a.category_id = c.id
@@ -115,6 +118,9 @@
             </if>
             <if test="status != null and status != ''">and a.status =
                 #{status}
+            </if>
+            <if test="clicked != null and clicked != ''">and a.clicked =
+                #{clicked}
             </if>
         </where>
     </select>
@@ -181,6 +187,8 @@
                 ,
             </if>
             <if test="updateTime != null">`update_time` = #{updateTime}
+            </if>
+            <if test="clicked != null">`clicked` = #{clicked}
             </if>
         </set>
         where id = #{id}

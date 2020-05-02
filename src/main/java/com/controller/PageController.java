@@ -1,6 +1,5 @@
 package com.controller;
 
-import com.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,12 +43,22 @@ public class PageController {
         return "welcome";
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
     /**
      * 用户管理
      */
     @GetMapping("/userManage")
     public String userManage() {
         return "userManage";
+    }
+
+    @GetMapping("/homeUserManage")
+    public String homeUserManage() {
+        return "homeUserManage";
     }
 
     @GetMapping("/userAdd")
@@ -135,6 +144,16 @@ public class PageController {
     @GetMapping("/commentView")
     public String commentView() {
         return "commentView";
+    }
+
+    @GetMapping("/myComment")
+    public String myComment() {
+        return "myComment";
+    }
+
+    @GetMapping("/toMeComment")
+    public String toMeComment() {
+        return "toMeComment";
     }
 
 

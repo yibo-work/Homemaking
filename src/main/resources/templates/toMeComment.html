@@ -34,7 +34,6 @@
                         <tr>
                             <th>序号</th>
                             <th>留言内容</th>
-                            <th>用户名</th>
                             <th>留言者</th>
                             <th>留言时间</th>
                             <th>操作</th>
@@ -44,26 +43,14 @@
                         <tr v-for="comment,i in pageInfo.list">
                             <td v-text="i+1"></td>
                             <td v-text="comment.content"></td>
-                            <td v-text="comment.userName"></td>
                             <td v-text="comment.commentUserName"></td>
                             <td v-text="comment.createTime"></td>
                             <td class="td-manage">
-                                <button @click="editComment(comment.id)"
-                                        class="layui-btn layui-btn-warm"
-                                        id="editComment"
-                                        onclick="xadmin.open('编辑留言','/commentEdit',500,700)">
-                                    <i class="layui-icon">&#xe631;</i>编辑
-                                </button>
-                                <!--<button @click="viewComment(comment.id)"
+                                <button @click="viewComment(comment.id)"
                                         class="layui-btn"
                                         id="viewComment"
                                         onclick="xadmin.open('留言详情','/commentView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
-                                </button>-->
-                                <button @click="delComment(comment.id)"
-                                        class="layui-btn layui-btn-danger"
-                                        id="delComment">
-                                    <i class="layui-icon">&#xe640;</i>删除
                                 </button>
                             </td>
                         </tr>
@@ -102,6 +89,8 @@
 </body>
 <script th:inline="javascript" type="text/javascript">
 
+    var sessionUser = [[${session.USER}]];
+
     layui.use(['form'], function () {});
 
     vm = new Vue({
@@ -120,6 +109,7 @@
                     url += "&pageSize=" + pageSize;
                 }
 
+                url+="&userId=" + sessionUser.id;
                 $.getJSON(url, function (data) {
                     _this.pageInfo = data;
                 });
@@ -154,14 +144,6 @@
                         });
 
                     });
-            },
-            /**
-             *
-             * 修改留言
-             */
-            editComment: function (editCommentId) {
-                //把要修改的editCommentId存到sessionStorage中
-                sessionStorage.setItem("editCommentId", editCommentId);
             },
             /**
              *

@@ -28,103 +28,114 @@
             </div>
         </div>
     </div>
-    <div class="layui-row layui-col-space15" id="vmUserDetail" style="margin-top: 20px">
-        <form class="layui-form">
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="name">
-                    用户名
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="name" name="name"
-                               readonly type="text" v-model="user.name">
-                    </div>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15" id="vmUserDetail">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <span style="font-size: 16px;font-weight: bold">个人信息</span>
+                </div>
+                <div class="layui-card-body" style="padding-top: 30px">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="name">
+                                用户名
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="name" name="name"
+                                           readonly type="text" v-model="user.name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="password">
+                                密码
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="password"
+                                           name="password" type="text" v-model="user.password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="age">
+                                年龄
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="age"
+                                           name="age" type="text" v-model="user.age">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="sex">
+                                性别
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="sex"
+                                           name="sex" type="text" v-model="user.sex">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="phone">
+                                电话
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="phone"
+                                           name="phone" type="text" v-model="user.phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="address">
+                                住址
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="address"
+                                           name="address" type="text" v-model="user.address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="qq">
+                                QQ
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="qq"
+                                           name="qq" type="text" v-model="user.qq">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="email">
+                                电子邮件
+                            </label>
+                            <div class="layui-input-block">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" id="email"
+                                           name="email" type="text" v-model="user.email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"></label>
+                            <button class="layui-btn" lay-filter="edit" lay-submit="">
+                                提交
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="password">
-                    密码
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="password"
-                               name="password" type="text" v-model="user.password">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="age">
-                    年龄
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="age"
-                               name="age" type="text" v-model="user.age">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="sex">
-                    性别
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="sex"
-                               name="sex" type="text" v-model="user.sex">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="phone">
-                    电话
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="phone"
-                               name="phone" type="text" v-model="user.phone">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="address">
-                    住址
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="address"
-                               name="address" type="text" v-model="user.address">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="qq">
-                    QQ
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="qq"
-                               name="qq" type="text" v-model="user.qq">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="email">
-                    电子邮件
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="email"
-                               name="email" type="text" v-model="user.email">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label"></label>
-                <button class="layui-btn" lay-filter="edit" lay-submit="">
-                    提交
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 </body>

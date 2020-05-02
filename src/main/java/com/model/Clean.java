@@ -69,6 +69,11 @@ public class Clean implements Serializable {
     private Integer status;
 
     /**
+     * 点击量
+     */
+    private Integer clicked;
+
+    /**
      * 发布时间
      */
     private Date createTime;

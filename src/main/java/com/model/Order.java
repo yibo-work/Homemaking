@@ -59,7 +59,7 @@ public class Order implements Serializable{
     private String serviceName;
 
     /**
-     * 状态
+     * 订单状态
      */
     private Integer status;
 

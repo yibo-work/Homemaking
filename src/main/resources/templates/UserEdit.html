@@ -23,8 +23,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input  readonly class="layui-input" id="name" lay-verify="required"
-                               name="name" type="text"
+                        <input class="layui-input" id="name" lay-verify="required" name="name"
+                               readonly type="text"
                                v-model="user.name">
                     </div>
                 </div>
@@ -127,9 +127,11 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="roleId" lay-verify="required"
-                               name="roleId" type="text"
-                               v-model="user.roleId">
+                        <select id="roleId" name="roleId" v-model="user.roleId">>
+                            <option value="1">管理员</option>
+                            <option value="2">用人单位</option>
+                            <option value="3">家政人员</option>
+                        </select>
                     </div>
                 </div>
             </div>

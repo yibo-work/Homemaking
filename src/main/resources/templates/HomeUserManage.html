@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>留言管理</title>
+    <title>用户管理</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -26,49 +26,64 @@
 </div>
 <div class="layui-fluid">
     <div class="layui-row layui-col-space15">
-        <div class="layui-col-md12" id="vmComment">
+        <div class="layui-col-md12" id="vmUser">
             <div class="layui-card">
+               <!-- <div class="layui-card-header">
+                    <button class="layui-btn" onclick="xadmin.open('添加用户','/userAdd',500,700)">
+                        <i class="layui-icon"></i>添加用户
+                    </button>
+                </div>-->
                 <div class="layui-card-body">
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>留言内容</th>
                             <th>用户名</th>
-                            <th>留言者</th>
-                            <th>留言时间</th>
+                            <th>密码</th>
+                            <th>年龄</th>
+                            <th>性别</th>
+                            <th>电话</th>
+                            <th>住址</th>
+                            <th>QQ</th>
+                            <th>电子邮件</th>
+                            <th>角色</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="comment,i in pageInfo.list">
+                        <tr v-for="user,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                            <td v-text="comment.content"></td>
-                            <td v-text="comment.userName"></td>
-                            <td v-text="comment.commentUserName"></td>
-                            <td v-text="comment.createTime"></td>
+                            <td v-text="user.name"></td>
+                            <td v-text="user.password"></td>
+                            <td v-text="user.age"></td>
+                            <td v-text="user.sex"></td>
+                            <td v-text="user.phone"></td>
+                            <td v-text="user.address"></td>
+                            <td v-text="user.qq"></td>
+                            <td v-text="user.email"></td>
+                            <td v-text="user.roleId"></td>
                             <td class="td-manage">
-                                <button @click="editComment(comment.id)"
+                                <button @click="editUser(user.id)"
                                         class="layui-btn layui-btn-warm"
-                                        id="editComment"
-                                        onclick="xadmin.open('编辑留言','/commentEdit',500,700)">
+                                        id="editUser"
+                                        onclick="xadmin.open('编辑用户','/userEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
-                                <!--<button @click="viewComment(comment.id)"
+                                <button @click="viewUser(user.id)"
                                         class="layui-btn"
-                                        id="viewComment"
-                                        onclick="xadmin.open('留言详情','/commentView',500,700)">
+                                        id="viewUser"
+                                        onclick="xadmin.open('用户详情','/userView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
-                                </button>-->
-                                <button @click="delComment(comment.id)"
+                                </button>
+                                <button @click="delUser(user.id)"
                                         class="layui-btn layui-btn-danger"
-                                        id="delComment">
+                                        id="delUser">
                                     <i class="layui-icon">&#xe640;</i>删除
                                 </button>
                             </td>
                         </tr>
                         <tr v-if="pageInfo.total == 0">
-                            <td colspan="100" style="text-align: center">暂无留言信息！</td>
+                            <td colspan="100" style="text-align: center">暂无用户信息！</td>
                         </tr>
                         </tbody>
                     </table>
@@ -100,19 +115,20 @@
     </div>
 </div>
 </body>
-<script th:inline="javascript" type="text/javascript">
+<script type="text/javascript">
 
-    layui.use(['form'], function () {});
+    layui.use(['form'], function () {
+    });
 
     vm = new Vue({
-        el: "#vmComment",
+        el: "#vmUser",
         data: {
             pageInfo: {}
         },
         methods: {
             getPage: function (pageNum, pageSize) {
                 var _this = this;
-                var url = "/comment/page?pageNum=" + pageNum;
+                var url = "/user/page?pageNum=" + pageNum;
 
                 if (!pageSize) {
                     url += "&pageSize=" + _this.pageInfo.pageSize;
@@ -125,14 +141,14 @@
                 });
             },
             /**
-             * 删除留言
+             * 删除用户
              */
-            delComment: function (id) {
+            delUser: function (id) {
                 layer.confirm('确认要删除吗？',
                     function () {
                         //发异步删除数据
                         $.ajax({
-                            url: "/comment/deleteById",
+                            url: "/user/deleteById",
                             data: {
                                 id: id
                             },
@@ -157,19 +173,19 @@
             },
             /**
              *
-             * 修改留言
+             * 修改用户
              */
-            editComment: function (editCommentId) {
-                //把要修改的editCommentId存到sessionStorage中
-                sessionStorage.setItem("editCommentId", editCommentId);
+            editUser: function (editUserId) {
+                //把要修改的editUserId存到sessionStorage中
+                sessionStorage.setItem("editUserId", editUserId);
             },
             /**
              *
-             * 留言详情
+             * 用户详情
              */
-            viewComment: function (viewCommentId) {
-                //把要修改的viewCommentId存到sessionStorage中
-                sessionStorage.setItem("viewCommentId", viewCommentId);
+            viewUser: function (viewUserId) {
+                //把要修改的viewUserId存到sessionStorage中
+                sessionStorage.setItem("viewUserId", viewUserId);
             }
         },
         created: function () {

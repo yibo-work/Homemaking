@@ -61,7 +61,9 @@
                             <td v-text="user.address"></td>
                             <td v-text="user.qq"></td>
                             <td v-text="user.email"></td>
-                            <td v-text="user.roleId"></td>
+                            <td v-if="user.roleId == 1">管理员</td>
+                            <td v-if="user.roleId == 2">用人单位</td>
+                            <td v-if="user.roleId == 3">家政人员</td>
                             <td class="td-manage">
                                 <button @click="editUser(user.id)"
                                         class="layui-btn layui-btn-warm"
@@ -69,12 +71,12 @@
                                         onclick="xadmin.open('编辑用户','/userEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
-                                <button @click="viewUser(user.id)"
+                                <!--<button @click="viewUser(user.id)"
                                         class="layui-btn"
                                         id="viewUser"
                                         onclick="xadmin.open('用户详情','/userView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
-                                </button>
+                                </button>-->
                                 <button @click="delUser(user.id)"
                                         class="layui-btn layui-btn-danger"
                                         id="delUser">

@@ -7,10 +7,11 @@ import java.util.Date;
 
 /**
  * 留言
+ *
  * @author Clrvn
  */
 @Data
-public class Comment implements Serializable{
+public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,6 +24,10 @@ public class Comment implements Serializable{
      * 留言内容
      */
     private String content;
+    /**
+     * 用户名称
+     */
+    private String userName;
 
     /**
      * 用户编号
@@ -33,6 +38,10 @@ public class Comment implements Serializable{
      * 留言用户编号
      */
     private Integer commentUserId;
+    /**
+     * 留言用户名称
+     */
+    private String commentUserName;
 
     /**
      * 发布时间
