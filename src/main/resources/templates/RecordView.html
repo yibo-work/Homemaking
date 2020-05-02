@@ -23,8 +23,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="score" name="score"
-                               readonly type="text" v-model="record.score">
+                        <div id="score" style="line-height: 36px" v-text="record.score"></div>
                     </div>
                 </div>
             </div>
@@ -34,8 +33,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="serviceId" name="serviceId"
-                               readonly type="text" v-model="record.serviceId">
+                        <div id="serviceId" style="line-height: 36px" v-text="record.serviceId"></div>
                     </div>
                 </div>
             </div>
@@ -45,8 +43,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="serviceName" name="serviceName"
-                               readonly type="text" v-model="record.serviceName">
+                        <div id="serviceName" style="line-height: 36px" v-text="record.serviceName"></div>
                     </div>
                 </div>
             </div>
@@ -56,8 +53,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="userId" name="userId"
-                               readonly type="text" v-model="record.userId">
+                        <div id="userId" style="line-height: 36px" v-text="record.userId"></div>
                     </div>
                 </div>
             </div>
@@ -67,8 +63,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="userName" name="userName"
-                               readonly type="text" v-model="record.userName">
+                        <div id="userName" style="line-height: 36px" v-text="record.userName"></div>
                     </div>
                 </div>
             </div>
@@ -78,8 +73,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" name="createTime"
-                               readonly type="text" v-model="record.createTime">
+                        <div id="createTime" style="line-height: 36px" v-text="record.createTime"></div>
                     </div>
                 </div>
             </div>
@@ -89,8 +83,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="updateTime" name="updateTime"
-                               readonly type="text" v-model="record.updateTime">
+                        <div id="updateTime" style="line-height: 36px" v-text="record.updateTime"></div>
                     </div>
                 </div>
             </div>
@@ -109,33 +102,31 @@
 
     vm = new Vue({
         el: "#vmViewRecord",
-        data: {;
-    {
-    }
-    },
-    {
-    }
-    ,
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/record/findById",
-            data: {
-                "id": viewRecordId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.record = result.data;
-                } else {
-                    layer.alert("获取修改分值记录信息失败！");
+        data: {
+            record: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/record/findById",
+                data: {
+                    "id": viewRecordId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.record = result.data;
+                    } else {
+                        layer.alert("获取修改分值记录信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
-    })
+        }
+    });
+
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

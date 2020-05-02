@@ -54,7 +54,8 @@
                             <td v-text="news.title"></td>
                             <td v-text="news.content"></td>
                             <td v-text="news.description"></td>
-                            <td v-text="news.type"></td>
+                            <td v-if="news.type == 1">行业新闻</td>
+                            <td v-else>站点公告</td>
                             <td v-text="news.createTime"></td>
                             <td v-text="news.updateTime"></td>
                             <td class="td-manage">

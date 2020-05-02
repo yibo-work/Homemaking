@@ -15,14 +15,14 @@
                `service_name`,
                `status`,
                `create_time`
-        from `order`
+        from order
         where id = #{id}
     </select>
 
     <select id="findByMap" resultType="com.model.Order">
         select
         `id`,`category_name`,`clean_name`,`category_id`,`clean_id`,`user_id`,`user_name`,`service_id`,`service_name`,`status`,`create_time`
-        from `order`
+        from order
         <where>
             <if test="id != null and id != ''">
                 and id = #{id}
@@ -63,7 +63,7 @@
     <select id="list" resultType="com.model.Order">
         select
         `id`,`category_name`,`clean_name`,`category_id`,`clean_id`,`user_id`,`user_name`,`service_id`,`service_name`,`status`,`create_time`
-        from `order`
+        from order
         <where>
             <if test="id != null and id != ''">and id =
                 #{id}
@@ -102,34 +102,38 @@
     </select>
 
     <insert id="save" parameterType="com.model.Order" useGeneratedKeys="true" keyProperty="id">
-        insert into `order`(
-        <if test="categoryName != null">`category_name`,</if>
-        <if test="cleanName != null">`clean_name`,</if>
-        <if test="categoryId != null">`category_id`,</if>
-        <if test="cleanId != null">`clean_id`,</if>
-        <if test="userId != null">`user_id`,</if>
-        <if test="userName != null">`user_name`,</if>
-        <if test="serviceId != null">`service_id`,</if>
-        <if test="serviceName != null">`service_name`,</if>
-        <if test="status != null">`status`,</if>
-        <if test="createTime != null">`create_time`</if>
+        insert into order(
+        <trim suffixOverrides=",">
+            <if test="categoryName != null">`category_name`,</if>
+            <if test="cleanName != null">`clean_name`,</if>
+            <if test="categoryId != null">`category_id`,</if>
+            <if test="cleanId != null">`clean_id`,</if>
+            <if test="userId != null">`user_id`,</if>
+            <if test="userName != null">`user_name`,</if>
+            <if test="serviceId != null">`service_id`,</if>
+            <if test="serviceName != null">`service_name`,</if>
+            <if test="status != null">`status`,</if>
+            <if test="createTime != null">`create_time`</if>
+        </trim>
         )
         values (
-        <if test="categoryName != null">#{categoryName},</if>
-        <if test="cleanName != null">#{cleanName},</if>
-        <if test="categoryId != null">#{categoryId},</if>
-        <if test="cleanId != null">#{cleanId},</if>
-        <if test="userId != null">#{userId},</if>
-        <if test="userName != null">#{userName},</if>
-        <if test="serviceId != null">#{serviceId},</if>
-        <if test="serviceName != null">#{serviceName},</if>
-        <if test="status != null">#{status},</if>
-        <if test="createTime != null">#{createTime}</if>
+        <trim suffixOverrides=",">
+            <if test="categoryName != null">#{categoryName},</if>
+            <if test="cleanName != null">#{cleanName},</if>
+            <if test="categoryId != null">#{categoryId},</if>
+            <if test="cleanId != null">#{cleanId},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="userName != null">#{userName},</if>
+            <if test="serviceId != null">#{serviceId},</if>
+            <if test="serviceName != null">#{serviceName},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createTime != null">#{createTime}</if>
+        </trim>
         )
     </insert>
 
     <update id="update" parameterType="com.model.Order">
-        update `order`
+        update order
         <set>
             <if test="categoryName != null">`category_name` = #{categoryName}
                 ,
@@ -166,7 +170,7 @@
 
     <delete id="deleteById">
         delete
-        from `order`
+        from order
         where id = #{id}
     </delete>
 

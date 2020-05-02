@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,34 +28,15 @@ public class PageController {
 
     @GetMapping("/index")
     public String index(HttpSession session, Model model) {
-        /*//默认，不用登录
-        UserVO user2 = new UserVO();
+        //默认，不用登录，测试用
         User user = new User();
         user.setId(1);
+        user.setRoleId(1);
         user.setName("chen");
         user.setPassword("123qwe");
-        user.setRoleId(4);
+        session.setAttribute("USER", user);
 
-        user2.setUser(user);
-        Role role = new Role();
-        role.setId(1);
-        role.setName("管理员");
-        role.setAuths("客户信息管理,客户拜访计划定制,客户拜访统计,客户拜访计划执行,年计划页,后台管理");
-
-        user2.setRole(role);
-
-        // 测试时取消前三行，加上后三行注释
-
-        *//*session.setAttribute("USER", user2);
-        model.addAttribute("auths", user2.getRole().getAuths());
-        return "index";*//*
-
-
-        UserVO userVo = (UserVO) session.getAttribute("USER");
-        model.addAttribute("auths", userVo.getRole().getAuths());*/
         return "index";
-
-
     }
 
     @GetMapping("/welcome")
@@ -179,6 +161,50 @@ public class PageController {
         return "newsView";
     }
 
+    /**
+     * 预约订单管理
+     */
+    @GetMapping("/orderManage")
+    public String orderManage() {
+        return "orderManage";
+    }
 
+    @GetMapping("/orderAdd")
+    public String orderAdd() {
+        return "orderAdd";
+    }
+
+    @GetMapping("/orderEdit")
+    public String orderEdit() {
+        return "orderEdit";
+    }
+
+    @GetMapping("/orderView")
+    public String orderView() {
+        return "orderView";
+    }
+
+    /**
+     * 预约订单管理
+     */
+    @GetMapping("/recordManage")
+    public String recordManage() {
+        return "recordManage";
+    }
+
+    @GetMapping("/recordAdd")
+    public String recordAdd() {
+        return "recordAdd";
+    }
+
+    @GetMapping("/recordEdit")
+    public String recordEdit() {
+        return "recordEdit";
+    }
+
+    @GetMapping("/recordView")
+    public String recordView() {
+        return "recordView";
+    }
 
 }

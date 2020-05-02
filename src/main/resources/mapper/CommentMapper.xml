@@ -53,16 +53,20 @@
 
     <insert id="save" parameterType="com.model.Comment" useGeneratedKeys="true" keyProperty="id">
         insert into comment(
-        <if test="content != null">`content`,</if>
-        <if test="userId != null">`user_id`,</if>
-        <if test="commentUserId != null">`comment_user_id`,</if>
-        <if test="createTime != null">`create_time`</if>
+        <trim suffixOverrides=",">
+            <if test="content != null">`content`,</if>
+            <if test="userId != null">`user_id`,</if>
+            <if test="commentUserId != null">`comment_user_id`,</if>
+            <if test="createTime != null">`create_time`</if>
+        </trim>
         )
         values (
-        <if test="content != null">#{content},</if>
-        <if test="userId != null">#{userId},</if>
-        <if test="commentUserId != null">#{commentUserId},</if>
-        <if test="createTime != null">#{createTime}</if>
+        <trim suffixOverrides=",">
+            <if test="content != null">#{content},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="commentUserId != null">#{commentUserId},</if>
+            <if test="createTime != null">#{createTime}</if>
+        </trim>
         )
     </insert>
 

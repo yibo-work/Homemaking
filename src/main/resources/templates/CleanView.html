@@ -23,8 +23,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="cleanName" name="cleanName"
-                               readonly type="text" v-model="clean.cleanName">
+                        <div id="cleanName" style="line-height: 36px" v-text="clean.cleanName"></div>
                     </div>
                 </div>
             </div>
@@ -34,9 +33,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="content"
-                                                                              name="content"
-                                                                              readonly rows="4" v-model="clean.content">></textarea>
+                        <div id="content" style="line-height: 36px" v-text="clean.content"></div>
                     </div>
                 </div>
             </div>
@@ -46,10 +43,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="description"
-                                                                              name="description"
-                                                                              readonly rows="4"
-                                                                              v-model="clean.description">></textarea>
+                        <div id="description" style="line-height: 36px" v-text="clean.description"></div>
                     </div>
                 </div>
             </div>
@@ -59,8 +53,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="price" name="price"
-                               readonly type="text" v-model="clean.price">
+                        <div id="price" style="line-height: 36px" v-text="clean.price"></div>
                     </div>
                 </div>
             </div>
@@ -70,8 +63,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="userId" name="userId"
-                               readonly type="text" v-model="clean.userId">
+                        <div id="userId" style="line-height: 36px" v-text="clean.userId"></div>
                     </div>
                 </div>
             </div>
@@ -81,8 +73,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="categoryId" name="categoryId"
-                               readonly type="text" v-model="clean.categoryId">
+                        <div id="categoryId" style="line-height: 36px" v-text="clean.categoryId"></div>
                     </div>
                 </div>
             </div>
@@ -92,8 +83,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="type" name="type"
-                               readonly type="text" v-model="clean.type">
+                        <div id="type" style="line-height: 36px" v-text="clean.type"></div>
                     </div>
                 </div>
             </div>
@@ -103,8 +93,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="status" name="status"
-                               readonly type="text" v-model="clean.status">
+                        <div id="status" style="line-height: 36px" v-text="clean.status"></div>
                     </div>
                 </div>
             </div>
@@ -114,8 +103,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" name="createTime"
-                               readonly type="text" v-model="clean.createTime">
+                        <div id="createTime" style="line-height: 36px" v-text="clean.createTime"></div>
                     </div>
                 </div>
             </div>
@@ -125,8 +113,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="updateTime" name="updateTime"
-                               readonly type="text" v-model="clean.updateTime">
+                        <div id="updateTime" style="line-height: 36px" v-text="clean.updateTime"></div>
                     </div>
                 </div>
             </div>
@@ -145,33 +132,31 @@
 
     vm = new Vue({
         el: "#vmViewClean",
-        data: {;
-    {
-    }
-    },
-    {
-    }
-    ,
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/clean/findById",
-            data: {
-                "id": viewCleanId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.clean = result.data;
-                } else {
-                    layer.alert("获取修改清洁服务信息失败！");
+        data: {
+            clean: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/clean/findById",
+                data: {
+                    "id": viewCleanId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.clean = result.data;
+                    } else {
+                        layer.alert("获取修改清洁服务信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
-    })
+        }
+    });
+
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

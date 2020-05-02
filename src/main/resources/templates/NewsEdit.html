@@ -40,7 +40,7 @@
                                                                                       id="content" lay-verify="required"
                                                                                       name="content"
                                                                                       rows="4"
-                                                                                      v-model="news.content">></textarea>
+                                                                                      v-model="news.content"></textarea>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                                                                                       lay-verify="required"
                                                                                       name="description"
                                                                                       rows="4"
-                                                                                      v-model="news.description">></textarea>
+                                                                                      v-model="news.description"></textarea>
                     </div>
                 </div>
             </div>
@@ -67,9 +67,12 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="type" lay-verify="required"
-                               name="type" type="text"
-                               v-model="news.type">
+                        <div class="layui-input-inline layui-show-xs-block">
+                            <select id="type" name="type" :value="news.type">
+                                <option value="1">行业新闻</option>
+                                <option value="2">站点公告</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

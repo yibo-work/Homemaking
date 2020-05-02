@@ -92,26 +92,30 @@
 
     <insert id="save" parameterType="com.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into user(
-        <if test="name != null">`name`,</if>
-        <if test="password != null">`password`,</if>
-        <if test="age != null">`age`,</if>
-        <if test="sex != null">`sex`,</if>
-        <if test="phone != null">`phone`,</if>
-        <if test="address != null">`address`,</if>
-        <if test="qq != null">`qq`,</if>
-        <if test="email != null">`email`,</if>
-        <if test="roleId != null">`role_id`</if>
+        <trim suffixOverrides=",">
+            <if test="name != null">`name`,</if>
+            <if test="password != null">`password`,</if>
+            <if test="age != null">`age`,</if>
+            <if test="sex != null">`sex`,</if>
+            <if test="phone != null">`phone`,</if>
+            <if test="address != null">`address`,</if>
+            <if test="qq != null">`qq`,</if>
+            <if test="email != null">`email`,</if>
+            <if test="roleId != null">`role_id`</if>
+        </trim>
         )
         values (
-        <if test="name != null">#{name},</if>
-        <if test="password != null">#{password},</if>
-        <if test="age != null">#{age},</if>
-        <if test="sex != null">#{sex},</if>
-        <if test="phone != null">#{phone},</if>
-        <if test="address != null">#{address},</if>
-        <if test="qq != null">#{qq},</if>
-        <if test="email != null">#{email},</if>
-        <if test="roleId != null">#{roleId}</if>
+        <trim suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="password != null">#{password},</if>
+            <if test="age != null">#{age},</if>
+            <if test="sex != null">#{sex},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="address != null">#{address},</if>
+            <if test="qq != null">#{qq},</if>
+            <if test="email != null">#{email},</if>
+            <if test="roleId != null">#{roleId}</if>
+        </trim>
         )
     </insert>
 

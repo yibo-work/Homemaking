@@ -78,22 +78,26 @@
 
     <insert id="save" parameterType="com.model.Record" useGeneratedKeys="true" keyProperty="id">
         insert into record(
-        <if test="score != null">`score`,</if>
-        <if test="serviceId != null">`service_id`,</if>
-        <if test="serviceName != null">`service_name`,</if>
-        <if test="userId != null">`user_id`,</if>
-        <if test="userName != null">`user_name`,</if>
-        <if test="createTime != null">`create_time`,</if>
-        <if test="updateTime != null">`update_time`</if>
+        <trim suffixOverrides=",">
+            <if test="score != null">`score`,</if>
+            <if test="serviceId != null">`service_id`,</if>
+            <if test="serviceName != null">`service_name`,</if>
+            <if test="userId != null">`user_id`,</if>
+            <if test="userName != null">`user_name`,</if>
+            <if test="createTime != null">`create_time`,</if>
+            <if test="updateTime != null">`update_time`</if>
+        </trim>
         )
         values (
-        <if test="score != null">#{score},</if>
-        <if test="serviceId != null">#{serviceId},</if>
-        <if test="serviceName != null">#{serviceName},</if>
-        <if test="userId != null">#{userId},</if>
-        <if test="userName != null">#{userName},</if>
-        <if test="createTime != null">#{createTime},</if>
-        <if test="updateTime != null">#{updateTime}</if>
+        <trim suffixOverrides=",">
+            <if test="score != null">#{score},</if>
+            <if test="serviceId != null">#{serviceId},</if>
+            <if test="serviceName != null">#{serviceName},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="userName != null">#{userName},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime}</if>
+        </trim>
         )
     </insert>
 

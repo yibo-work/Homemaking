@@ -23,8 +23,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="name" name="name"
-                               readonly type="text" v-model="user.name">
+                        <div id="name" style="line-height: 36px" v-text="user.name"></div>
                     </div>
                 </div>
             </div>
@@ -34,8 +33,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="password" name="password"
-                               readonly type="text" v-model="user.password">
+                        <div id="password" style="line-height: 36px" v-text="user.password"></div>
                     </div>
                 </div>
             </div>
@@ -45,8 +43,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="age" name="age"
-                               readonly type="text" v-model="user.age">
+                        <div id="age" style="line-height: 36px" v-text="user.age"></div>
                     </div>
                 </div>
             </div>
@@ -56,8 +53,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="sex" name="sex"
-                               readonly type="text" v-model="user.sex">
+                        <div id="sex" style="line-height: 36px" v-text="user.sex"></div>
                     </div>
                 </div>
             </div>
@@ -67,8 +63,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="phone" name="phone"
-                               readonly type="text" v-model="user.phone">
+                        <div id="phone" style="line-height: 36px" v-text="user.phone"></div>
                     </div>
                 </div>
             </div>
@@ -78,8 +73,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="address" name="address"
-                               readonly type="text" v-model="user.address">
+                        <div id="address" style="line-height: 36px" v-text="user.address"></div>
                     </div>
                 </div>
             </div>
@@ -89,8 +83,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="qq" name="qq"
-                               readonly type="text" v-model="user.qq">
+                        <div id="qq" style="line-height: 36px" v-text="user.qq"></div>
                     </div>
                 </div>
             </div>
@@ -100,8 +93,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="email" name="email"
-                               readonly type="text" v-model="user.email">
+                        <div id="email" style="line-height: 36px" v-text="user.email"></div>
                     </div>
                 </div>
             </div>
@@ -111,8 +103,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="roleId" name="roleId"
-                               readonly type="text" v-model="user.roleId">
+                        <div id="roleId" style="line-height: 36px" v-text="user.roleId"></div>
                     </div>
                 </div>
             </div>
@@ -131,33 +122,31 @@
 
     vm = new Vue({
         el: "#vmViewUser",
-        data: {;
-    {
-    }
-    },
-    {
-    }
-    ,
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/user/findById",
-            data: {
-                "id": viewUserId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.user = result.data;
-                } else {
-                    layer.alert("获取修改用户信息失败！");
+        data: {
+            user: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/user/findById",
+                data: {
+                    "id": viewUserId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.user = result.data;
+                    } else {
+                        layer.alert("获取修改用户信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
-    })
+        }
+    });
+
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

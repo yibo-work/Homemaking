@@ -65,20 +65,24 @@
 
     <insert id="save" parameterType="com.model.News" useGeneratedKeys="true" keyProperty="id">
         insert into news(
-        <if test="title != null">`title`,</if>
-        <if test="content != null">`content`,</if>
-        <if test="description != null">`description`,</if>
-        <if test="type != null">`type`,</if>
-        <if test="createTime != null">`create_time`,</if>
-        <if test="updateTime != null">`update_time`</if>
+        <trim suffixOverrides=",">
+            <if test="title != null">`title`,</if>
+            <if test="content != null">`content`,</if>
+            <if test="description != null">`description`,</if>
+            <if test="type != null">`type`,</if>
+            <if test="createTime != null">`create_time`,</if>
+            <if test="updateTime != null">`update_time`</if>
+        </trim>
         )
         values (
-        <if test="title != null">#{title},</if>
-        <if test="content != null">#{content},</if>
-        <if test="description != null">#{description},</if>
-        <if test="type != null">#{type},</if>
-        <if test="createTime != null">#{createTime},</if>
-        <if test="updateTime != null">#{updateTime}</if>
+        <trim suffixOverrides=",">
+            <if test="title != null">#{title},</if>
+            <if test="content != null">#{content},</if>
+            <if test="description != null">#{description},</if>
+            <if test="type != null">#{type},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime}</if>
+        </trim>
         )
     </insert>
 

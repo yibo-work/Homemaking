@@ -59,18 +59,22 @@
 
     <insert id="save" parameterType="com.model.Category" useGeneratedKeys="true" keyProperty="id">
         insert into category(
-        <if test="categoryName != null">`category_name`,</if>
-        <if test="description != null">`description`,</if>
-        <if test="status != null">`status`,</if>
-        <if test="createTime != null">`create_time`,</if>
-        <if test="updateTime != null">`update_time`</if>
+        <trim suffixOverrides=",">
+            <if test="categoryName != null">`category_name`,</if>
+            <if test="description != null">`description`,</if>
+            <if test="status != null">`status`,</if>
+            <if test="createTime != null">`create_time`,</if>
+            <if test="updateTime != null">`update_time`</if>
+        </trim>
         )
         values (
-        <if test="categoryName != null">#{categoryName},</if>
-        <if test="description != null">#{description},</if>
-        <if test="status != null">#{status},</if>
-        <if test="createTime != null">#{createTime},</if>
-        <if test="updateTime != null">#{updateTime}</if>
+        <trim suffixOverrides=",">
+            <if test="categoryName != null">#{categoryName},</if>
+            <if test="description != null">#{description},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime}</if>
+        </trim>
         )
     </insert>
 

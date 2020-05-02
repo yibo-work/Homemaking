@@ -103,28 +103,32 @@
 
     <insert id="save" parameterType="com.model.Clean" useGeneratedKeys="true" keyProperty="id">
         insert into clean(
-        <if test="cleanName != null">`clean_name`,</if>
-        <if test="content != null">`content`,</if>
-        <if test="description != null">`description`,</if>
-        <if test="price != null">`price`,</if>
-        <if test="userId != null">`user_id`,</if>
-        <if test="categoryId != null">`category_id`,</if>
-        <if test="type != null">`type`,</if>
-        <if test="status != null">`status`,</if>
-        <if test="createTime != null">`create_time`,</if>
-        <if test="updateTime != null">`update_time`</if>
+        <trim suffixOverrides=",">
+            <if test="cleanName != null">`clean_name`,</if>
+            <if test="content != null">`content`,</if>
+            <if test="description != null">`description`,</if>
+            <if test="price != null">`price`,</if>
+            <if test="userId != null">`user_id`,</if>
+            <if test="categoryId != null">`category_id`,</if>
+            <if test="type != null">`type`,</if>
+            <if test="status != null">`status`,</if>
+            <if test="createTime != null">`create_time`,</if>
+            <if test="updateTime != null">`update_time`</if>
+        </trim>
         )
         values (
-        <if test="cleanName != null">#{cleanName},</if>
-        <if test="content != null">#{content},</if>
-        <if test="description != null">#{description},</if>
-        <if test="price != null">#{price},</if>
-        <if test="userId != null">#{userId},</if>
-        <if test="categoryId != null">#{categoryId},</if>
-        <if test="type != null">#{type},</if>
-        <if test="status != null">#{status},</if>
-        <if test="createTime != null">#{createTime},</if>
-        <if test="updateTime != null">#{updateTime}</if>
+        <trim suffixOverrides=",">
+            <if test="cleanName != null">#{cleanName},</if>
+            <if test="content != null">#{content},</if>
+            <if test="description != null">#{description},</if>
+            <if test="price != null">#{price},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="categoryId != null">#{categoryId},</if>
+            <if test="type != null">#{type},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime}</if>
+        </trim>
         )
     </insert>
 

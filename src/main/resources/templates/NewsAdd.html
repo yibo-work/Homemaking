@@ -49,12 +49,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-
-                                                                            <textarea class="layui-textarea"
-                                                                                      id="description"
-                                                                                      lay-verify="required"
-                                                                                      name="description"
-                                                                                      rows="4"></textarea>
+                        <textarea class="layui-textarea" id="description" lay-verify="required" name="description"
+                                  rows="4"></textarea>
                     </div>
                 </div>
             </div>
@@ -64,9 +60,10 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-
-                        <input class="layui-input" id="type" name="type"
-                               type="text">
+                        <select id="type" name="type">
+                            <option value="1">行业新闻</option>
+                            <option value="2">站点公告</option>
+                        </select>
                     </div>
                 </div>
             </div>

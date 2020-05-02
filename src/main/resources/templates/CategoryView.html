@@ -23,8 +23,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="categoryName" name="categoryName"
-                               readonly type="text" v-model="category.categoryName">
+                        <div id="categoryName" style="line-height: 36px" v-text="category.categoryName"></div>
                     </div>
                 </div>
             </div>
@@ -34,10 +33,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="description"
-                                                                              name="description"
-                                                                              readonly rows="4"
-                                                                              v-model="category.description">></textarea>
+                        <div id="description" style="line-height: 36px" v-text="category.description"></div>
                     </div>
                 </div>
             </div>
@@ -47,8 +43,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="status" name="status"
-                               readonly type="text" v-model="category.status">
+                        <div id="status" style="line-height: 36px" v-text="category.status"></div>
                     </div>
                 </div>
             </div>
@@ -58,8 +53,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" name="createTime"
-                               readonly type="text" v-model="category.createTime">
+                        <div id="createTime" style="line-height: 36px" v-text="category.createTime"></div>
                     </div>
                 </div>
             </div>
@@ -69,8 +63,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="updateTime" name="updateTime"
-                               readonly type="text" v-model="category.updateTime">
+                        <div id="updateTime" style="line-height: 36px" v-text="category.updateTime"></div>
                     </div>
                 </div>
             </div>
@@ -89,33 +82,31 @@
 
     vm = new Vue({
         el: "#vmViewCategory",
-        data: {;
-    {
-    }
-    },
-    {
-    }
-    ,
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/category/findById",
-            data: {
-                "id": viewCategoryId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.category = result.data;
-                } else {
-                    layer.alert("获取修改服务分类信息失败！");
+        data: {
+            category: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/category/findById",
+                data: {
+                    "id": viewCategoryId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.category = result.data;
+                    } else {
+                        layer.alert("获取修改服务分类信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
-    })
+        }
+    });
+
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>

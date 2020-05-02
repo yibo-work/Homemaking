@@ -23,8 +23,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="title" name="title"
-                               readonly type="text" v-model="news.title">
+                        <div id="title" style="line-height: 36px" v-text="news.title"></div>
                     </div>
                 </div>
             </div>
@@ -34,10 +33,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="content"
-                                                                              name="content"
-                                                                              readonly rows="4"
-                                                                              v-model="news.content">></textarea>
+                        <div id="content" style="line-height: 36px" v-text="news.content"></div>
                     </div>
                 </div>
             </div>
@@ -47,10 +43,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                                                                    <textarea class="layui-textarea" id="description"
-                                                                              name="description"
-                                                                              readonly rows="4"
-                                                                              v-model="news.description">></textarea>
+                        <div id="description" style="line-height: 36px" v-text="news.description"></div>
                     </div>
                 </div>
             </div>
@@ -60,8 +53,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="type" name="type"
-                               readonly type="text" v-model="news.type">
+                        <div id="type" style="line-height: 36px" v-if="news.type == 1">行业新闻</div>
+                        <div id="type" style="line-height: 36px" v-else>站点公告</div>
                     </div>
                 </div>
             </div>
@@ -71,8 +64,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="createTime" name="createTime"
-                               readonly type="text" v-model="news.createTime">
+                        <div id="createTime" style="line-height: 36px" v-text="news.createTime"></div>
                     </div>
                 </div>
             </div>
@@ -82,8 +74,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="updateTime" name="updateTime"
-                               readonly type="text" v-model="news.updateTime">
+                        <div id="updateTime" style="line-height: 36px" v-text="news.updateTime"></div>
                     </div>
                 </div>
             </div>
@@ -102,33 +93,31 @@
 
     vm = new Vue({
         el: "#vmViewNews",
-        data: {;
-    {
-    }
-    },
-    {
-    }
-    ,
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/news/findById",
-            data: {
-                "id": viewNewsId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.news = result.data;
-                } else {
-                    layer.alert("获取修改新闻信息信息失败！");
+        data: {
+            news: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/news/findById",
+                data: {
+                    "id": viewNewsId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.news = result.data;
+                    } else {
+                        layer.alert("获取修改新闻信息信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
-    })
+        }
+    });
+
     layui.use(['form', 'layer', 'laydate'], function () {
     });
 </script>
