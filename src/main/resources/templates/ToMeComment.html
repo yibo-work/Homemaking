@@ -46,6 +46,11 @@
                             <td v-text="comment.commentUserName"></td>
                             <td v-text="comment.createTime"></td>
                             <td class="td-manage">
+                                <button @click="addComment(JSON.stringify(comment))"
+                                        class="layui-btn layui-btn-primary"
+                                        id="addComment">
+                                    <i class="layui-icon iconfont">&#xe69b;</i>回复
+                                </button>
                                 <button @click="viewComment(comment.id)"
                                         class="layui-btn"
                                         id="viewComment"
@@ -152,6 +157,40 @@
             viewComment: function (viewCommentId) {
                 //把要修改的viewCommentId存到sessionStorage中
                 sessionStorage.setItem("viewCommentId", viewCommentId);
+            },
+            addComment: function (commentStr) {
+                var oldComment = JSON.parse(commentStr);
+                layer.prompt({
+                    formType: 2,
+                    value: '请输入回复留言',
+                    title: '回复留言',
+                    area: ['150px', '100px'] //自定义文本域宽高
+                }, function (value, index, elem) {
+                    var comment = {};
+                    comment.content = value;
+                    comment.userId = oldComment.commentUserId;
+                    comment.commentUserId = sessionUser.id;
+                    //发异步，把数据提交给java
+                    $.ajax({
+                        url: "/comment/save",
+                        data: JSON.stringify(comment),
+                        dataType: "json",
+                        type: "post",
+                        contentType: "application/json",
+                        success: function (result) {
+                            if (result.code === 200) {
+                                layer.msg("回复留言成功", {icon: 6, time: 500},
+                                    function () {
+                                        location.reload();
+                                    });
+                            } else {
+                                layer.alert(result.msg);
+                            }
+                        }
+                    });
+
+                    layer.close(index);
+                })
             }
         },
         created: function () {

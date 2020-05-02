@@ -45,7 +45,7 @@
                             <th>发布人</th>
                             <th>服务分类</th>
                             <th>类型</th>
-                            <th th:if="${session.USER.roleId == 1}">审核</th>
+                            <th>审核</th>
                             <th>点击量</th>
                             <th>发布时间</th>
                             <th>修改时间</th>
@@ -63,13 +63,13 @@
                             <td v-text="clean.categoryName"></td>
                             <td style="font-weight: bold" v-if="clean.type == 1">需求</td>
                             <td style="font-weight: bold" v-if="clean.type == 2">服务</td>
-                            <td style="color: green" th:if="${session.USER.roleId == 1}" v-if="clean.status == 1">
+                            <td style="color: green"  v-if="clean.status == 1">
                                 通过审核
                             </td>
-                            <td style="color: #FFB800" th:if="${session.USER.roleId == 1}" v-if="clean.status == 0">
+                            <td style="color: #FFB800" v-if="clean.status == 0">
                                 待审核
                             </td>
-                            <td style="color: red" th:if="${session.USER.roleId == 1}" v-if="clean.status == -1">
+                            <td style="color: red"  v-if="clean.status == -1">
                                 审核未通过
                             </td>
                             <td v-text="clean.clicked"></td>
